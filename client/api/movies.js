@@ -1,11 +1,11 @@
  module.exports = [
-{
-    "name": "Braveheart",
-    "location": "Fort William",
-    "lat": 56.8198,
-    "long": 5.1052,
-    "description": "When his secret bride is executed for assaulting an English soldier who tried to rape her, William Wallace begins a revolt against King Edward I of England.",
-    "img": "/images/braveheart.jpg"
+ {
+  "name": "Braveheart",
+  "location": "Fort William",
+  "lat": 56.8198,
+  "long": 5.1052,
+  "description": "When his secret bride is executed for assaulting an English soldier who tried to rape her, William Wallace begins a revolt against King Edward I of England.",
+  "img": "/images/braveheart.jpg"
 },
 {
   "name": "Local Hero",
