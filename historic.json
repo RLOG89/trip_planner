@@ -1,0 +1,69 @@
+
+  [
+  {
+    "lat": 55.949099, 
+    "lng": 3.199871,
+    "name": "Edinburgh Castle",
+    "location": "Edinburgh",
+    "description": "Edinburgh Castle is a historic fortress which dominates the skyline of the city of Edinburgh, Scotland, from its position on the Castle Rock. Its importance as a part of Scotland's national heritage was recognised increasingly from the early 19th century onwards, and various restoration programmes have been carried out over the past century and a half. As one of the most important strongholds in the Kingdom of Scotland, Edinburgh Castle was involved in many historical conflicts from the Wars of Scottish Independence in the 14th century to the Jacobite Rising of 1745.",
+    "img": "http://parkviewhousehotel.co.uk/wp-content/uploads/2016/09/edinburgh-castle.jpg",
+  },
+  {
+    "lat": ,
+    "lng": ,
+    "name": "Skara Brae Prehistoric Village",
+    "location": ,
+    "description": "The Neolithic settlement of Skara Brae is one of the best preserved groups of prehistoric houses in Western Europe. Uncovered by a storm in 1850, Skara Brae gives a remarkable picture of life 5,000 years ago, before Stonehenge was built. Explore this prehistoric village and see ancient homes fitted with stone beds, dressers and seats. A replica house allows visitors to explore its interior, while the visitor centre provides touch-screen presentations, fact-finding quizzes and an opportunity to see artefacts discovered during the archaeological excavations of the 1970s.",
+    "img": 
+  },
+  {
+    "lat": 57.4735,
+    "lng": ,
+    "name": "Clava Cairns",
+    "location": "Inverness",
+    "description": "Clava Cairns are a well-preserved Bronze Age cemetery complex of passage graves; ring cairns, kerb cairns and standing stones in a beautiful setting. Clava Cairns or the Prehistoric Burial Cairns of Bulnuaran of Clava are a group of three Bronze Age cairns located near Inverness. A hugely significant and exceptionally well preserved prehistoric site, Clava Cairns is a fantastic example of the distant history of Highland Scotland, dating back about 4,000 years.",
+    "img": 
+  },
+  {
+    "lat": ,
+    "lng": ,
+    "name": ,
+    "location": ,
+    "description": ,
+    "img": 
+  },
+  {
+    "lat": , 
+    "lng": ,
+    "name": ,
+    "location": ,
+    "description": ,
+    "img": 
+  },
+  {
+    "lat": , 
+    "lng": ,
+    "name": ,
+    "location": ,
+    "description": ,
+    "img": 
+  },
+  {
+    "lat": , 
+    "lng": ,
+    "name": ,
+    "location": ,
+    "description": ,
+    "img": 
+  },
+  {
+    "lat": , 
+    "lng": ,
+    "name": ,
+    "location": ,
+    "description": ,
+    "img": 
+  }
+
+  ]
+}
