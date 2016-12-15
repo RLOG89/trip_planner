@@ -18,7 +18,21 @@ var app = function() {
       whiskyActive = true;
       populateList(whisky);
     }
-  }
+  },
+
+  var app = function() {
+    console.log("here");
+    var whiskyButton = document.getElementById('distilleries');
+    var whiskyActive = false;
+    whiskyButton.onclick = function() {
+      if (whiskyActive) {
+        whiskyActive = false;
+        populateList(whisky,true);
+      } else {
+        whiskyActive = true;
+        populateList(whisky);
+      }
+    },
 
 
   var mapDiv = document.getElementById('main-map');
