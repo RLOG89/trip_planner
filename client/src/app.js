@@ -2,15 +2,22 @@ var whisky = require('../api/whisky.js');
 var sports = require('../api/sports.js');
 var movies = require('../api/movies.js');
 var historic = require('../api/historic.js');
+var MapWrapper = require('./views/mapWrapper.js');
 
 
 
 var app = function() {
-  populateList(whisky);
-  populateList(sports);
-  populateList(movies);
-  populateList(historic);
-}
+  // populateList(whisky);
+  // populateList(sports);
+  // populateList(movies);
+  // populateList(historic);
+
+  var mapDiv = document.getElementById('main-map');
+
+  var startCoords = ({lat: 56.4907, lng: -4.2026});
+
+  var newMap = new MapWrapper(mapDiv, startCoords, 6);
+};
 
 var populateList = function(thing) {
   var list = document.getElementById('list');
@@ -27,7 +34,7 @@ var populateList = function(thing) {
     list.appendChild(liLocation);
     list.appendChild(liDescription);
     list.appendChild(liImg);
-  })
+  });
 };
 
 
