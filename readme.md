@@ -24,19 +24,16 @@ Plan your holiday in Scotland with this app. Choose to visit Distilleries, Movie
 
 ##Installation instructions:
 
-  need 4 terminals running
+  Need 3 terminals running:
+
     Terminal 1. - NPM
-    > npm install express --save
-    > npm init
+    > npm install 
     > npm start
 
     Terminal 2. - WEB PACK
-    > npm install body parser --save
     > webpack -w
 
     Terminal 3. - MONGO server
     > npm install mongodb --save
     > mongod
 
-    Terminal 4. - MONGO terminal
-    > mongo (for the mongo > prompt)
