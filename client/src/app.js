@@ -10,6 +10,11 @@ var app = function() {
   populateList(sports);
   populateList(movies);
   populateList(historic);
+
+  var mapDiv = document.getElementById('main-map')
+  var startCoords = ({lat: 56.4907, lng: -4.2026})
+
+  map = new mapWrapper(mapDiv, startCoords, 7)
 }
 
 var populateList = function(thing) {
