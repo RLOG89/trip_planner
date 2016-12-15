@@ -1,4 +1,4 @@
-[
+module.exports = [
 {
   "name":         "Ardbeg",
   "location":     "Port Ellen",
