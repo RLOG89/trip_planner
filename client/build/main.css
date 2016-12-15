@@ -2,3 +2,9 @@ img {
   height: 150px;
   width: auto;
 }
+
+#main-map {
+  width: 400px;
+  height: 600px;
+  display: inline-block;
+}
