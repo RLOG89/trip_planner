@@ -1,0 +1,75 @@
+[
+{
+  "name":         "Ardbeg",
+  "location":     "Port Ellen",
+  "region":       "Islay",
+  "lat":          55.640752,
+  "lng":          6.108134,
+  "description":  "Ardbeg Distillery is a Scotch whisky distillery in Ardbeg on the south coast of the isle of Islay, Argyll and Bute, Scotland, in the Inner Hebrides group of islands.",
+  "img":          
+}, {
+  "name":         "Balvenie",
+  "location":     "Dufftown",
+  "region":       "Speyside",
+  "lat":
+  "lng":
+  "description":
+}, {
+  "name":         "Glenfarclas",
+  "location":     "Ballindollach",
+  "region":       "Speyside",
+  "lat":
+  "lng":
+  "description":
+}, {
+  "name":         "Glenfiddich",
+  "location":     "Dufftown",
+  "region":       "Speyside",
+  "lat":
+  "lng":
+  "description":
+}, {
+  "name":         "Highland Park",
+  "location":     "Kirkwall",
+  "region":       "Islands",
+  "lat":
+  "lng":
+  "description":
+}, {
+  "name":         "Laphroaig",
+  "location":     "Port Ellen",
+  "region":       "Islay",
+  "lat":
+  "lng":
+  "description":
+}, {
+  "name":         "The Macallan",
+  "location":     "Craigellachie",
+  "region":       "Speyside",
+  "lat":
+  "lng":
+  "description":
+}, {
+  "name":         "Pulteney",
+  "location":     "Wick",
+  "region":       "Highlands",
+  "lat":
+  "lng":
+  "description":
+}, {
+  "name":         "Springbank",
+  "location":     "Mull of Kintyre",
+  "region":       "Campbeltown",
+  "lat":
+  "lng":
+  "description":
+}, {
+  "name":         "Talisker",
+  "location":     "Carbost, Isle of Skye",
+  "region":       "Islands",
+  "lat":  
+  "lng":
+  "description":
+},
+
+];
