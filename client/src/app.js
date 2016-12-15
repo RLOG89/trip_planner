@@ -1,9 +1,9 @@
 var whisky = require('../api/whisky.js');
-var sports = require('../api/sports.json');
-var movies = require('../api/movies.json');
-var historic = require('../api/historic.json');
+// var sports = require('../api/sports.json');
+// var movies = require('../api/movies.json');
+// var historic = require('../api/historic.json');
 
-var list = document.findElementById('list');
+
 
 var app = function() {
   console.log('called')
@@ -11,9 +11,10 @@ var app = function() {
 }
 
 var whiskyList = function(whisky) {
-  var jsonString = JSON.parse(whisky);
+  var list = document.getElementById('list');
+  // var jsonString = JSON.parse(whisky);
   console.log('function entered');
-  jsonString.forEach(function(item) {
+  whisky.forEach(function(item) {
     var liName = document.createElement('li');
     var liLocation = document.createElement('li');
     var liDescription = document.createElement('li');
