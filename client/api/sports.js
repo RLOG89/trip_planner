@@ -1,4 +1,4 @@
-[
+module.exports = [
 {
   "lat": 56.346025, 
   "lng": 2.802696,
@@ -6,7 +6,7 @@
   "location": "St. Andrews",
   "name": "The Old Course",
   "description": "The oldest and most iconic golf course in the world. The Swilcan Bridge and Hell Bunker are recognised across the globe, yet the greatest feature of the Old Course is that despite its grand status it remains a public golf course, open to all.",
-  "img": "../build/images/the_old_course.jpg"
+  "img": "/images/the_old_course.jpg"
 },
 {
   "lat": 55.942908, 
@@ -15,7 +15,7 @@
   "location": "Edinburgh",
   "name": "Murrayfield Stadium",
   "description": "Murrayfield Stadium (known as BT Murrayfield Stadium for sponsorship reasons, or usually just known as Murrayfield) is a sports stadium located in the west end of Edinburgh, the capital of Scotland. Its all-seater capacity is 67,800 which makes it the largest stadium in Scotland and the fifth largest in the United Kingdom.",
-  "img": "../build/images/murrayfield-187664416.jpg"
+  "img": "/images/murrayfield.jpg"
 },
 {
   "lat": 57.139886, 
@@ -24,7 +24,7 @@
   "name": "Cairngorm Mountain",
   "location": "Aviemore",
   "description": "Cairngorm Mountain has a reputation as one of the most beautiful - and sometimes challenging - places to ski in the UK, as well as boasting Scotland's only funicular railway.",
-  "img": "../build/images/cairngorm.jpg"
+  "img": "/images/cairngorm.jpg"
 },
 {
   "lat": 56.130813, 
@@ -33,7 +33,7 @@
   "name": "Knockhill Racing Circuit",
   "location": "Dunfermline",
   "description": "Knockhill Racing Circuit is a motor racing circuit in Fife, Scotland. It opened in September 1974 and is Scotland's national motorsport centre. The circuit is located in the countryside about 6 miles north of Dunfermline.",
-  "img": "../build/images/knockhill.jpg"
+  "img": "/images/knockhill.jpg"
 },
 {
   "lat": 57.048235, 
@@ -42,7 +42,7 @@
   "name": "Active Highs",
   "location": "Spean Bridge",
   "description": "Active Highs offer outdoor activities & activity breaks in Scotland. White Water Rafting, Canyoning, Gorge Walking, Canoeing, Kayaking, Climbing, Abseiling.",
-  "img": "../build/images/active_highs.jpg"
+  "img": "/images/active_highs.jpg"
 },
 {
   "lat": 55.847547, 
@@ -51,7 +51,7 @@
   "name": "Emirates Arena",
   "location": "Glasgow",
   "description": "The Indoor Arena is a custom built arena ideal for hosting any number of sporting events. It has capacity for up to 7,000 spectators and most recently staged the badminton competition of the Glasgow 2014 Commonwealth Games.",
-  "img": "../build/images/emirates_arena.jpg"
+  "img": "/images/emirates_arena.jpg"
 },
 {
   "lat": 55.850395, 
@@ -60,7 +60,7 @@
   "name": "Celtic Park",
   "location": "Glasgow",
   "description": "Raucous home stadium of Celtic FC",
-  "img": "../build/images/celtic_park.jpg"
+  "img": "/images/celtic_park.jpg"
 },
 {
   "lat": 55.947859, 
@@ -69,7 +69,7 @@
   "name": "Cowal Highland Gathering",
   "location": "Dunoon",
   "description": "The Cowal Highland Gathering (also known as the Cowal Games) is an annual Highland games event held in the Scottish town of Dunoon, Argyll, over the final weekend in August.",
-  "img": "../build/images/cowal_highland_games.jpg"
+  "img": "/images/cowel_highland_games.jpg"
 },
 
 {
@@ -79,7 +79,7 @@
   "name": "Fort William Shinty Club",
   "location": "Fort William",
   "description": "One of the oldest and most prestigious shinty clubs in Scotland. Fort William Shinty Club are the most decorated shinty club in Fort William.",
-  "img": "../build/images/fort_william_shinty_club.jpg"
+  "img": "/images/fort_william_shinty_club.jpg"
 },
 {
   "lat": 55.012910, 
@@ -88,7 +88,7 @@
   "name": "Westlands Country Park",
   "location": "Annan",
   "description": "Based in Dumfries & Galloway, only 10 minutes drive from the motorway. One of the country’s first class locations for clay pigeon shooting and fishing.",
-  "img": "../build/images/westlands_country_park.jpg"
+  "img": "/images/westlands_country_park.jpg"
 }
 
 ]
