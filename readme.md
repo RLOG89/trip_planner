@@ -24,7 +24,8 @@ Plan your holiday in Scotland with this app. Choose to visit Distilleries, Movie
 
 ##Installation instructions:
 
-  need 3 terminals running
+  Need 3 terminals running:
+
     Terminal 1. - NPM
     > npm install 
     > npm start
