@@ -1,20 +1,20 @@
 var whisky = require('../api/whisky.js');
-// var sports = require('../api/sports.json');
-// var movies = require('../api/movies.json');
-// var historic = require('../api/historic.json');
+var sports = require('../api/sports.js');
+var movies = require('../api/movies.js');
+var historic = require('../api/historic.js');
 
 
 
 var app = function() {
-  console.log('called')
-  whiskyList(whisky)
+  populateList(whisky);
+  populateList(sports);
+  populateList(movies);
+  populateList(historic);
 }
 
-var whiskyList = function(whisky) {
+var populateList = function(thing) {
   var list = document.getElementById('list');
-  // var jsonString = JSON.parse(whisky);
-  console.log('function entered');
-  whisky.forEach(function(item) {
+  thing.forEach(function(item) {
     var liName = document.createElement('li');
     var liLocation = document.createElement('li');
     var liDescription = document.createElement('li');
@@ -28,6 +28,7 @@ var whiskyList = function(whisky) {
     list.appendChild(liDescription);
     list.appendChild(liImg);
   })
-}
+};
+
 
 window.onload = app;

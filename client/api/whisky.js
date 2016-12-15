@@ -38,7 +38,7 @@ module.exports = [
   "lat":           58.967960,
   "lng":           2.955335,
   "description":   "Highland Park distillery is a Scotch whisky distillery based in Kirkwall, Orkney. It is the most northerly whisky distillery in Scotland, half a mile farther north than that at Scapa distillery.",
-  "img":          "/images/highland_park.jpeg"
+  "img":          "/images/highland_park.jpg"
 }, {
   "name":         "Laphroaig",
   "location":     "Port Ellen",
@@ -46,7 +46,7 @@ module.exports = [
   "lat":          55.630075,
   "lng":          6.152225,
   "description":  "Laphroaig distillery is an Islay single malt Scotch whisky distillery. It is named for the area of land at the head of Loch Laphroaig on the south coast of the Isle of Islay.",
-  "img":          "/images/laphroaig.jpeg"
+  "img":          "/images/laphroaig.jpg"
 }, {
   "name":         "The Macallan",
   "location":     "Craigellachie",
