@@ -7,10 +7,10 @@ var MapWrapper = require('./views/mapWrapper.js');
 
 
 var app = function() {
-  // populateList(whisky);
-  // populateList(sports);
-  // populateList(movies);
-  // populateList(historic);
+  populateList(whisky);
+  populateList(sports);
+  populateList(movies);
+  populateList(historic);
 
   var mapDiv = document.getElementById('main-map');
 
