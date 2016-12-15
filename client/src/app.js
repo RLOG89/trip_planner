@@ -75,11 +75,9 @@ var app = function() {
       list.appendChild(destination);
       list.appendChild(checkbox);
       itemCoords = {lat: item.lat, lng: item.lng};
-      // console.log(newMap)
-      // console.log(itemCoords);
       console.log(newMap);
       // newMap.clearMarkers;
-      newMap.addMarker(itemCoords);
+      newMap.addMarker(itemCoords, item.img, item.description);
     })
   }
 
