@@ -49,13 +49,29 @@
     "img": "../build/image/arbroath_abbey"
   },
   {
+    "lat": 56.1334, 
+    "lng": 5.4869,
+    "name": "Kilmartin Glen",
+    "location": "Kilmartin",
+    "description": "Kilmartin Glen is located between Oban and Lochgilphead, surrounding the village of Kilmartin, on the west of Scotland. The area spans 5,000 years with a multitude of cairns, standing stones, carved rock, stone circles, forts and castles. Kilmartin Glen is considered to have one of the most important concentrations of Neolithic and Bronze Age remains in Scotland. There are more than 350 ancient monuments within a six mile radius of the village, with 150 of them being prehistoric. Monuments include standing stones, a henge monument, numerous cists, and a ‘linear cemetery’ comprising five burial cairns.",
+    "img": "../build/image/kilmartin_glen"
+  },
+  {
+    "lat": 55.8627, 
+    "lng": 4.2311,
+    "name": "The Necropolis",
+    "location": "Glasgow",
+    "description": "The Glasgow Necropolis is a Victorian cemetery in Glasgow, Scotland. It is on a low but very prominent hill to the east of Glasgow Cathedral (St. Mungo's Cathedral). Fifty thousand individuals have been buried here. Typically for the period only a small percentage are named on monuments and not every grave has a stone. Approximately 3500 monuments exist here.",
+    "img": "../build/image/necropolis_glasgow"
+  }
+  {
     "lat": , 
     "lng": ,
     "name": ,
     "location": ,
     "description": ,
     "img": 
-  },
+  }
   {
     "lat": , 
     "lng": ,
