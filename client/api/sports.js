@@ -1,7 +1,7 @@
 module.exports = [
 {
   "lat": 56.346025, 
-  "lng": 2.802696,
+  "lng": -2.802696,
   "sport": "Golf",
   "location": "St. Andrews",
   "name": "The Old Course",
@@ -10,7 +10,7 @@ module.exports = [
 },
 {
   "lat": 55.942908, 
-  "lng": 3.240764,
+  "lng": -3.240764,
   "sport": "Rugby",
   "location": "Edinburgh",
   "name": "Murrayfield Stadium",
@@ -19,7 +19,7 @@ module.exports = [
 },
 {
   "lat": 57.139886, 
-  "lng": 3.670441,
+  "lng": -3.670441,
   "sport": "Winter Sports",
   "name": "Cairngorm Mountain",
   "location": "Aviemore",
@@ -28,7 +28,7 @@ module.exports = [
 },
 {
   "lat": 56.130813, 
-  "lng": 3.506044,
+  "lng": -3.506044,
   "sport": "Motor Racing",
   "name": "Knockhill Racing Circuit",
   "location": "Dunfermline",
@@ -37,7 +37,7 @@ module.exports = [
 },
 {
   "lat": 57.048235, 
-  "lng": 4.799309,
+  "lng": -4.799309,
   "sport": "Adventure Sports",
   "name": "Active Highs",
   "location": "Spean Bridge",
@@ -46,7 +46,7 @@ module.exports = [
 },
 {
   "lat": 55.847547, 
-  "lng": 4.207336,
+  "lng": -4.207336,
   "sport": "Athletics/Cycling",
   "name": "Emirates Arena",
   "location": "Glasgow",
@@ -55,7 +55,7 @@ module.exports = [
 },
 {
   "lat": 55.850395, 
-  "lng": 4.205629,
+  "lng": -4.205629,
   "sport": "Football",
   "name": "Celtic Park",
   "location": "Glasgow",
@@ -64,7 +64,7 @@ module.exports = [
 },
 {
   "lat": 55.947859, 
-  "lng": 4.928009,
+  "lng": -4.928009,
   "sport": "Highland Games",
   "name": "Cowal Highland Gathering",
   "location": "Dunoon",
@@ -74,7 +74,7 @@ module.exports = [
 
 {
   "lat": 56.823823, 
-  "lng": 5.101546,
+  "lng": -5.101546,
   "sport": "Shinty",
   "name": "Fort William Shinty Club",
   "location": "Fort William",
@@ -83,7 +83,7 @@ module.exports = [
 },
 {
   "lat": 55.012910, 
-  "lng": 3.159003,
+  "lng": -3.159003,
   "sport": "Shooting",
   "name": "Westlands Country Park",
   "location": "Annan",
