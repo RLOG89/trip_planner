@@ -61,7 +61,11 @@ var app = function() {
   var populateList = function(categories, clear) {
     var list = document.getElementById('list');
     list.innerHTML = "";
+
     if (clear) return;
+
+    newMap.deleteMarkers();
+
     categories.forEach(function(item) {
 
       var destination = document.createElement('li');
@@ -79,7 +83,7 @@ var app = function() {
       // newMap.clearMarkers;
       newMap.addMarker(itemCoords, item.img, item.description);
     })
-  }
+  };
 
 };
 
