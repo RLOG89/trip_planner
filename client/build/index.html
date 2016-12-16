@@ -7,13 +7,26 @@
   <script src='bundle.js'></script>
 </head>
 <body>
-<div id=list-container>
-<button id="distilleries">Distilleries</button>
-<button id="sports">Sports</button>
-<button id="movies">Movie Locations</button>
-<button id="historic">Historical Sites</button>
-<ul id="list"></ul>
-</div>
-<div id="main-map"></div>
+  <div id="password-container">
+    <div id="password-header">
+      <h3>Please login to retrieve trip details or save a new trip</h3>
+    </div>
+    <form id="login" method="post" name="login">
+      <label>Username :</label>
+      <input type="text" name="username" id="username"/>
+      <label>Password :</label>
+      <input type="password" name="password" id="password"/>
+      <input type="button" value="Login" id="submit" onclick="validate()"/>
+    </form>
+  </div>
+
+  <div id=list-container>
+    <button id="distilleries">Distilleries</button>
+    <button id="sports">Sports</button>
+    <button id="movies">Movie Locations</button>
+    <button id="historic">Historical Sites</button>
+    <ul id="list"></ul>
+  </div>
+  <div id="main-map"></div>
 </body>
 </html>
