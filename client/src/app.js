@@ -11,6 +11,7 @@ var app = function() {
   whiskyButton.onclick = function() {
     if (whiskyActive) {
       whiskyActive = false;
+      newMap.deleteMarkers();
       populateList(whisky,true);
     } else {
       whiskyActive = true;
@@ -23,6 +24,7 @@ var app = function() {
   sportsButton.onclick = function() {
     if (sportsActive) {
       sportsActive = false;
+      newMap.deleteMarkers();
       populateList(sports,true);
     } else {
       sportsActive = true;
@@ -34,6 +36,7 @@ var app = function() {
   var moviesActive = false;
   moviesButton.onclick = function() {
     if (moviesActive) {
+      newMap.deleteMarkers();
       moviesActive = false;
       populateList(movies,true);
     } else {
@@ -47,6 +50,7 @@ var app = function() {
   historicButton.onclick = function() {
     if (historicActive) {
       historicActive = false;
+      newMap.deleteMarkers();
       populateList(historic,true);
     } else {
       historicActive = true;
