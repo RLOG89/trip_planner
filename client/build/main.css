@@ -152,8 +152,7 @@ input {
 #description-pictures {
   width: 270px;
   height: auto;
-  position: relative;
-  align-self: center;
+  position: center;
 }
 
 #itinerary-map {
@@ -191,7 +190,7 @@ ul {
 }
 
 #ul::-webkit-scrollbar {
-  width: 1em;
+  width: 0.5em;
 }
 
 #ul::-webkit-scrollbar-thumb {
