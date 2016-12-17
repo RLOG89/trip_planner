@@ -8,3 +8,12 @@ img {
   height: 600px;
   display: inline-block;
 }
+
+#button {
+  background-color: #856367;
+  border: none;
+  color: #eae3ea;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+}
