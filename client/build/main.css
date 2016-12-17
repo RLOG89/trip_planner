@@ -179,6 +179,7 @@ ul {
   list-style-type: none;
   padding: none;
   text-align: left;
+  margin: none;
 }
 
 #ul::-webkit-scrollbar {
