@@ -9,10 +9,24 @@ img {
 }
 
 #heading {
-  display: run-in;
-  vertical-align: middle;
-  position: relative;
-  left: 30px;
+  position: fixed;
+    top: 0;
+    left: 23px;
+    z-index: 999;
+    width: 100%;
+    height: 23px;
+}
+
+#mTitle {
+  width: 120px;
+}
+
+#mIndex {
+  width: 40px;
+}
+
+#mDestinations {
+  width: 165px;
 }
 
 a {
@@ -27,21 +41,19 @@ a {
 }
 
 #container {
-  width: 1220px;
-  height: 675px;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: auto;
-  margin-right:auto;
+  width: 1230px;
+  height: 630px;
+  margin-top: 70px;
+  margin-left: 0px;
   background-color: #a7b3a5;
-  position: relative;
+  position: fixed;
   border-radius: 10px;
 }
 
 #about {
   position: relative;
   left: 15px;
-  top: 60px;
+  top: 15px;
   color: #856367;
   padding: 20px;
   background-color: #eae3ea;
@@ -58,25 +70,37 @@ a {
   color: #856367;
   background-color: #eae3ea;
   position: relative;
-  top: 23px;
-  margin-left: 25px;
+  top: -22px;
+  margin-left: 37px;
   margin-right: 10px;
-  width: 250px;
+  width: 260px;
   height: 560px;
   display: inline-block;
   border-radius: 5px;
 }
 
-#picture {
+#picturediv {
   position: relative;
-  width: auto;
-  height: 4000px;
+  left: 25px;
+  top: 15px;
+  padding: 0px;
   display: inline-block;
+  border-radius: 5px;
+}
+
+#picture {
+  width: 480px;
+  height: 600px;
+  border-radius: 5px;
+}
+
+input {
+  width: 250px;
 }
 
 #main-map {
   position: relative;
-  top: 60px;
+  top: 15px;
   margin-left: 25px;
   margin-right: 10px;
   width: 400px;
@@ -87,7 +111,7 @@ a {
 #destinations {
   position: relative;
   left: 15px;
-  top: 60px;
+  top: 15px;
   color: #856367;
   padding: 20px;
   background-color: #eae3ea;
@@ -99,10 +123,25 @@ a {
   border-radius: 5px;
 }
 
+#descriptions {
+  position: relative;
+  left: 0px;
+  top: 15px;
+  color: #856367;
+  padding: 20px;
+  background-color: #eae3ea;
+  list-style-type:none;
+  width: 344px;
+  height: 560px;
+  overflow: scroll;
+  display: inline-block;
+  border-radius: 5px;
+}
+
 #itinerary-map {
   position: relative;
   left: 15px;
-  top: 60px;
+  top: 15px;
   color: #856367;
   padding: 20px;
   background-color: #eae3ea;
@@ -114,12 +153,12 @@ a {
 #itinerary {
   position: relative;
   left: 25px;
-  top: 60px;
+  top: 15px;
   color: #856367;
   padding: 20px;
   background-color: #eae3ea;
   list-style-type:none;
-  width: 640px;
+  width: 655px;
   height: 560px;
   overflow: scroll;
   display: inline-block;
@@ -129,6 +168,7 @@ a {
 ul {
   list-style-type: none;
   padding: none;
+  text-align: left;
 }
 
 #ul::-webkit-scrollbar {
@@ -143,7 +183,7 @@ button {
   font-family: 'Arvo', serif;
   background-color: #856367;
   border: none;
-  color: #eae3ea;
+  color: white;
   text-align: center;
   text-decoration: none;
   font-size: 12px;
