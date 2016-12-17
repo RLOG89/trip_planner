@@ -1,19 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Scottish Trip Planner</title>
+  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="main.css">
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
   <script src='bundle.js'></script>
 </head>
+
 <body>
-<div id=list-container>
-<button id="distilleries">Distilleries</button>
-<button id="sports">Sports</button>
-<button id="movies">Movie Locations</button>
-<button id="historic">Historical Sites</button>
-<ul id="list"></ul>
-</div>
-<div id="main-map"></div>
+
+  <div id="heading">
+
+    <h2>Scot Trip</h2>
+    <a href="index.html">Home</a>
+    <a href="destinations.html">Select Destinations</a>
+    <a href="Itinerary.html">Itinerary</a>
+
+  </div>
+
+  <div id="container">
+
+    <div id="about">
+
+      <h2>Welcome!</h2>
+      <p>Scot Trip is a thing you can use to plan trips in Scotland.</p>
+
+    </div>
+
+    <div id="form">
+
+      <h2>Sign Up</h2>
+      <form>
+        Name your Trip!:<br>
+        <input type="text" name="firstname"><br>
+        Full name:<br>
+        <input type="text" name="fullname"><br>
+        Budget:<br>
+        <input type="number" name="lastname"><br>
+        Start Date:<br>
+        <input type="date" name="startdate"><br>
+        End Date:<br>
+        <input type="date" name="enddate"><br>
+        Start/End location:<br>
+        <input type="text" name="startendpoint"><br>
+        <input type="submit" value="Submit">
+      </form>
+      <h2>Log In</h2>
+      Full name:<br>
+      <input type="text" name="fullname"><br>
+      <input type="submit" value="Submit">
+      <h2>Log Out</h2>
+      <button id="log-out">Log Out</button>
+
+    </div>
+
+    <div id="picture">
+    <img src="images/home.jpg" alt="home-image">
+    </div>
+
+  </div>
 </body>
 </html>
