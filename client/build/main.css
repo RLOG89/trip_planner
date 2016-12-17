@@ -68,8 +68,10 @@ a {
 }
 
 #picture {
-  height: 560px;
-  width: 250px;
+  position: relative;
+  width: auto;
+  height: 4000px;
+  display: inline-block;
 }
 
 #main-map {
@@ -91,6 +93,33 @@ a {
   background-color: #eae3ea;
   list-style-type:none;
   width: 350px;
+  height: 560px;
+  overflow: scroll;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+#itinerary-map {
+  position: relative;
+  left: 15px;
+  top: 60px;
+  color: #856367;
+  padding: 20px;
+  background-color: #eae3ea;
+  width: 450px;
+  height: 560px;
+  display: inline-block;
+}
+
+#itinerary {
+  position: relative;
+  left: 25px;
+  top: 60px;
+  color: #856367;
+  padding: 20px;
+  background-color: #eae3ea;
+  list-style-type:none;
+  width: 640px;
   height: 560px;
   overflow: scroll;
   display: inline-block;

@@ -84,39 +84,10 @@ var app = function() {
       list.appendChild(checkbox);
       itemCoords = {lat: item.lat, lng: item.lng};
       console.log(newMap);
-      // newMap.clearMarkers;
       newMap.addMarker(itemCoords, item.img, item.description);
     })
   };
 
 };
 
-
 window.onload = app;
-
-    //   populateList(sports);
-    //   populateList(movies);
-    //   populateList(historic);
-    // }
-  // var populateList = function(thing) {
-  //   var list = document.getElementById('list');
-  //   thing.forEach(function(item) {
-  //     var liName = document.createElement('li');
-  //     var liLocation = document.createElement('li');
-  //     var liDescription = document.createElement('li');
-  //     var liImg = document.createElement('img');
-  //     liName.innerText = item.name;
-  //     liLocation.innerText = item.location;
-  //     liDescription.innerText = item.description;
-  //     liImg.src = item.img;
-  //     list.appendChild(liName);
-  //     list.appendChild(liLocation);
-  //     list.appendChild(liDescription);
-  //     list.appendChild(liImg);
-  //   })
-  // };
-
-    // populateList(whisky);
-    // populateList(sports);
-    // populateList(movies);
-    // populateList(historic);
