@@ -62,7 +62,7 @@ var app = function() {
   var itineraryMapDiv = document.getElementById('itinerary-map');
   var startCoords = ({lat: 56.4907, lng: -4.2026});
   var newMap = new MapWrapper(mapDiv, startCoords, 6);
-  var itineraryMap new MapWrapper(itineraryMapDiv, startCoords, 6);
+  var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
 
   var populateList = function(categories, clear) {
     var list = document.getElementById('list');

@@ -135,6 +135,15 @@ input {
   border-radius: 5px;
 }
 
+#destinations::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0em;
+}
+
+#destinations::-webkit-scrollbar-thumb {
+  background-color: #856367;
+}
+
 #add-button {
   margin-left: 5px;
 }
@@ -155,8 +164,17 @@ input {
   overflow: scroll;
 }
 
+#descriptions::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0em;
+}
+
+#descriptions::-webkit-scrollbar-thumb {
+  background-color: #856367;
+}
+
 #description-pictures {
-  width: 270px;
+  width: 320px;
   height: auto;
   position: center;
 }
@@ -201,15 +219,7 @@ ul {
   background-color: #856367;
 }
 
-#destinations::-webkit-scrollbar {
-  width: 0.5em;
-  height: 0em;
 
-}
-
-#destinations::-webkit-scrollbar-thumb {
-  background-color: #856367;
-}
 
 button {
   font-family: 'Arvo', serif;
