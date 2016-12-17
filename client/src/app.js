@@ -59,8 +59,10 @@ var app = function() {
   };
 
   var mapDiv = document.getElementById('main-map');
+  var itineraryMapDiv = document.getElementById('itinerary-map');
   var startCoords = ({lat: 56.4907, lng: -4.2026});
   var newMap = new MapWrapper(mapDiv, startCoords, 6);
+  var itineraryMap new MapWrapper(itineraryMapDiv, startCoords, 6);
 
   var populateList = function(categories, clear) {
     var list = document.getElementById('list');
@@ -71,16 +73,13 @@ var app = function() {
     newMap.deleteMarkers();
 
     categories.forEach(function(item) {
-
-      var destination = document.createElement('li');
-      var checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.name = item.name;
-      checkbox.value = false;
-      checkbox.id = item.name;
-      var viewButton = document.createElement('button');
       var spacer = document.createElement('p');
+      var destination = document.createElement('li');
+      var viewButton = document.createElement('button');
+      var addButton = document.createElement('button');
       viewButton.innerHTML = 'view';
+      addButton.innerHTML = 'add to trip';
+      addButton.id = 'add-button';
       viewButton.addEventListener ("click", function() {
         var description = document.getElementById('description');
         var image = document.createElement('img');
@@ -94,15 +93,14 @@ var app = function() {
 
       destination.innerText = item.name +', ' + item.location;
       list.appendChild(destination);
-      list.appendChild(checkbox);
       list.appendChild(viewButton);
+      list.appendChild(addButton);
       list.appendChild(spacer);
       itemCoords = {lat: item.lat, lng: item.lng};
       console.log(newMap);
       newMap.addMarker(itemCoords, item.img, item.description);
     })
   };
-
 };
 
 window.onload = app;
