@@ -1,10 +1,121 @@
+body {
+  font-family: 'Arvo', serif;
+  color: darkgray;
+}
+
 img {
   height: 150px;
   width: auto;
 }
 
+#heading {
+  display: run-in;
+  vertical-align: middle;
+  position: relative;
+  left: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  background-color: #856367;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 5px;
+}
+
+#container {
+  width: 1220px;
+  height: 675px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right:auto;
+  background-color: #a7b3a5;
+  position: relative;
+  border-radius: 10px;
+}
+
+#about {
+  position: relative;
+  left: 15px;
+  top: 60px;
+  color: #856367;
+  padding: 20px;
+  background-color: #eae3ea;
+  list-style-type:none;
+  width: 350px;
+  height: 560px;
+  overflow: scroll;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+#form {
+  padding: 20px;
+  color: #856367;
+  background-color: #eae3ea;
+  position: relative;
+  top: 23px;
+  margin-left: 25px;
+  margin-right: 10px;
+  width: 250px;
+  height: 560px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+#picture {
+  height: 560px;
+  width: 250px;
+}
+
 #main-map {
+  position: relative;
+  top: 60px;
+  margin-left: 25px;
+  margin-right: 10px;
   width: 400px;
   height: 600px;
   display: inline-block;
+}
+
+#destinations {
+  position: relative;
+  left: 15px;
+  top: 60px;
+  color: #856367;
+  padding: 20px;
+  background-color: #eae3ea;
+  list-style-type:none;
+  width: 350px;
+  height: 560px;
+  overflow: scroll;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding: none;
+}
+
+#ul::-webkit-scrollbar {
+  width: 1em;
+}
+
+#ul::-webkit-scrollbar-thumb {
+  background-color: #856367;
+}
+
+button {
+  font-family: 'Arvo', serif;
+  background-color: #856367;
+  border: none;
+  color: #eae3ea;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
 }
