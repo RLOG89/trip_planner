@@ -12,10 +12,12 @@
 <body>
 
   <div id="heading">
-    <h2>Scot Trip</h2>
-    <a href="index.html">Home</a>
-    <a href="destinations.html">Select Destinations</a>
-    <a href="Itinerary.html">Itinerary</a>
+    <table style="width:50%">
+      <tr><td id='mTitle'><h2>Scot Trip</h2></td>
+      <td id='mIndex'><a href="index.html">Home</a></td> 
+      <td id='mDestinations'><a href="destinations.html">Select Destinations</a></td>
+      <td id='mItinerary'><a href="itinerary.html">Itinerary</a></td>
+    </tr>
   </div>
 
   <div id="container">
@@ -28,14 +30,18 @@
         <button id="movies">Movie Locations</button>
         <button id="historic">Historical Sites</button>
       </div>
-
+      <form>
       <ul id="list"></ul>
-
-      <input type="submit" value="Submit">
+      <button type="submit" name="id" value="value">Submit</button>
+      </form>
+      
 
     </div>
 
     <div id="main-map"></div>
+
+    <div id="descriptions">
+    </div>
   </div>
 
 </body>
