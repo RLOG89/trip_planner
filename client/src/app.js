@@ -78,10 +78,25 @@ var app = function() {
       checkbox.name = item.name;
       checkbox.value = false;
       checkbox.id = item.name;
+      var viewButton = document.createElement('button');
+      var spacer = document.createElement('p');
+      viewButton.innerHTML = 'view';
+      viewButton.addEventListener ("click", function() {
+        var description = document.getElementById('description');
+        var image = document.createElement('img');
+        description.innerText =  item.name +', ' + item.location + '\n \n' + item.description + '\n \n';
+        image.id = 'description-pictures'
+        image.src = item.img;
+        image.height = '100px';
+        image.width = '100px';
+        description.appendChild(image);
+      });
 
       destination.innerText = item.name +', ' + item.location;
       list.appendChild(destination);
       list.appendChild(checkbox);
+      list.appendChild(viewButton);
+      list.appendChild(spacer);
       itemCoords = {lat: item.lat, lng: item.lng};
       console.log(newMap);
       newMap.addMarker(itemCoords, item.img, item.description);

@@ -126,7 +126,7 @@ input {
   padding: 20px;
   background-color: #eae3ea;
   list-style-type:none;
-  width: 350px;
+  width: 355px;
   height: 560px;
   overflow: scroll;
   display: inline-block;
@@ -141,11 +141,19 @@ input {
   padding: 20px;
   background-color: #eae3ea;
   list-style-type:none;
-  width: 344px;
+  width: 339px;
   height: 560px;
   overflow: scroll;
   display: inline-block;
   border-radius: 5px;
+  overflow: scroll;
+}
+
+#description-pictures {
+  width: 270px;
+  height: auto;
+  position: relative;
+  align-self: center;
 }
 
 #itinerary-map {
@@ -187,6 +195,14 @@ ul {
 }
 
 #ul::-webkit-scrollbar-thumb {
+  background-color: #856367;
+}
+
+#destinations::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+#destinations::-webkit-scrollbar-thumb {
   background-color: #856367;
 }
 
