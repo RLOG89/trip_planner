@@ -27,5 +27,11 @@ describe('trip', function() {
     assert.equal(trip.end_date, "December 25, 2016 12:00:00");
   });
 
+  it('should have duration', function() {
+    var trip = new Trip({name:'Distillery Tour 2016',owner:'Ross',budget:500, start_date: "December 17, 2016 12:00:00", end_date: "December 25, 2016 12:00:00"});
+    trip.getDuration();
+    assert.equal(trip.duration, 8);
+  });
+
 
 });
