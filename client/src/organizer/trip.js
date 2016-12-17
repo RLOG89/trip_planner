@@ -5,6 +5,7 @@ var Trip = function(params) {
   this.start_date = params.start_date;
   this.end_date = params.end_date;
   this.duration = 0;
+  this.activities = [];
 };
 
 Trip.prototype = {
