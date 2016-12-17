@@ -7,6 +7,7 @@ describe('organizer', function() {
     var organizer = new Organizer();
     assert.equal(0, organizer.trips.length);
   });
+  
   it('should be able to add trip', function() {
     var organizer = new Organizer();
     var trip = new Trip({name:'Ross',budget:500});
