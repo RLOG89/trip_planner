@@ -19,8 +19,6 @@ app.get('/', function (req, res) {
 
 
 app.get('/trips', function(req,res) {
-
-  // Connection URL
   MongoClient.connect(url, function(err, db) {
     var collection = db.collection('trips');
     collection.find({}).toArray(function(err, docs) {
@@ -39,7 +37,8 @@ app.post('/trips', function(req,res) {
         "owner": req.body.owner,
         "budget": req.body.budget,
         "start_date": req.body.start_date,
-        "end_date": req.body.end_date
+        "end_date": req.body.end_date,
+        "activities": []
       }
     );
     res.status(200).end();
