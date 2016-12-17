@@ -80,7 +80,7 @@ var app = function() {
       checkbox.id = item.name;
 
       destination.innerText = item.name +', ' + item.location;
-      list.appendChild(destination);
+      list.appendChild(destination, checkbox);
       list.appendChild(checkbox);
       itemCoords = {lat: item.lat, lng: item.lng};
       console.log(newMap);

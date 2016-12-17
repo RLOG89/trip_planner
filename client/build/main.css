@@ -45,7 +45,7 @@ a {
   height: 630px;
   margin-top: 70px;
   margin-left: 0px;
-  background-color: #a7b3a5;
+  background-color: #939dad;
   position: fixed;
   border-radius: 10px;
 }
@@ -70,13 +70,22 @@ a {
   color: #856367;
   background-color: #eae3ea;
   position: relative;
-  top: -22px;
+  top: 15px;
   margin-left: 37px;
   margin-right: 10px;
   width: 260px;
   height: 560px;
   display: inline-block;
   border-radius: 5px;
+  overflow: scroll;
+}
+
+#form::-webkit-scrollbar {
+  width: 1em;
+}
+
+#form::-webkit-scrollbar-thumb {
+  background-color: #856367;
 }
 
 #picturediv {
@@ -95,7 +104,8 @@ a {
 }
 
 input {
-  width: 250px;
+  width: 240px;
+  font-size: 14px;
 }
 
 #main-map {
@@ -187,4 +197,5 @@ button {
   text-align: center;
   text-decoration: none;
   font-size: 12px;
+  border-radius: 5px;
 }
