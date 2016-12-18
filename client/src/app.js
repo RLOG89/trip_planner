@@ -3,8 +3,39 @@ var sports = require('../api/sports.js');
 var movies = require('../api/movies.js');
 var historic = require('../api/historic.js');
 var MapWrapper = require('./views/mapWrapper.js');
+var DbHelper = require('./helper/dbHelper.js');
+var Organizer = require('./organizer/organizer.js');
+var Trip = require('./organizer/trip.js');
 
 var app = function() {
+
+  var organizer = new Organizer();
+
+  var tripForm = document.querySelector('#trip-form');
+  tripForm.onsubmit = function(e) {
+    e.preventDefault();
+    var tripData = {
+      trip_name: document.querySelector("#name").value,
+      full_name: document.querySelector('#owner').value,
+      budget: parseFloat(document.querySelector('#budget').value),
+      start_date: document.querySelector('#start-date').value,
+      end_date: document.querySelector('#end-date').value,
+      start_end_location: document.querySelector('#start-end-location').value
+    };
+    var newTrip = new Trip(tripData);
+    organizer.addTrip(newTrip);
+
+    var request = new XMLHttpRequest();
+    request.open("POST", url);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onload = function() {
+      if(request.status === 200) {
+      }
+    };
+    request.send(JSON.stringify(tripData));
+  };
+
+
 
   var whiskyButton = document.getElementById('distilleries');
   var whiskyActive = false;
@@ -59,10 +90,10 @@ var app = function() {
   };
 
   var mapDiv = document.getElementById('main-map');
-  var itineraryMapDiv = document.getElementById('itinerary-map');
+  // var itineraryMapDiv = document.getElementById('itinerary-map');
   var startCoords = ({lat: 56.4907, lng: -4.2026});
   var newMap = new MapWrapper(mapDiv, startCoords, 6);
-  var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
+  // var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
 
   var populateList = function(categories, clear) {
     var list = document.getElementById('list');
@@ -90,6 +121,9 @@ var app = function() {
         image.width = '100px';
         description.appendChild(image);
       });
+      addButton.addEventListener ("click", function() {
+
+      })
 
       destination.innerText = item.name +', ' + item.location;
       list.appendChild(destination);

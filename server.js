@@ -38,7 +38,10 @@ app.post('/trips', function(req,res) {
         "budget": req.body.budget,
         "start_date": req.body.start_date,
         "end_date": req.body.end_date,
-        "activities": []
+        "start_end_location": req.body.start_end_location,
+        "duration": 0,
+        "activities": [],
+        "number_of_activities": 0
       }
     );
     res.status(200).end();
