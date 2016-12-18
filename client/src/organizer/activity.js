@@ -5,4 +5,10 @@ var Activity = function(params) {
   this.completed = false;
   };
 
+  Activity.prototype = {
+    setCompleted: function() {
+      this.completed = true;
+    },
+};
+
 module.exports = Activity;

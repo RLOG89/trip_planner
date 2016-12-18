@@ -19,4 +19,12 @@ describe('activity', function() {
     var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
     assert.equal(activity.completed, false);
   });
+
+  it('should be able to complete activity', function() {
+    var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    activity.setCompleted();
+    assert.equal(activity.completed, true);
+  });
+
+
 });
