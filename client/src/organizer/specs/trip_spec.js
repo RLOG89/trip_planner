@@ -35,19 +35,19 @@ describe('trip', function() {
   });
 
   it('should start off with no activities ', function() {
-    var trip = new Trip({name:'Distillery Tour 2016',owner:'Ross',budget:500, start_date: "December 17, 2016 12:00:00", end_date: "December 25, 2016 12:00:00"});
+    var trip = new Trip({name:'Distillery Tour 2016'});
     assert.equal(0, trip.activities.length);
   });
 
   it('should be able to add activity', function() {
-    var trip = new Trip({name:'Distillery Tour 2016',owner:'Ross',budget:500, start_date: "December 17, 2016 12:00:00", end_date: "December 25, 2016 12:00:00"});
+    var trip = new Trip({name:'Distillery Tour 2016'});
     var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
     trip.addActivity(activity);
     assert.deepEqual(activity, trip.activities[0]);
   });
 
   it('should be able to remove activity', function() {
-    var trip = new Trip({name:'Distillery Tour 2016',owner:'Ross',budget:500, start_date: "December 17, 2016 12:00:00", end_date: "December 25, 2016 12:00:00"});
+    var trip = new Trip({name:'Distillery Tour 2016'});
     var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
     trip.addActivity(activity);
     assert.deepEqual(activity, trip.activities[0]);
