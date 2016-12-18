@@ -58,8 +58,8 @@ describe('trip', function() {
   it('should be able to get total number of activities', function() {
     var trip = new Trip({name:'Distillery Tour 2016'});
     var activity1 = new Activity({name:'Glenmorangie'});
-    var activity2 = new Activity({name:'Glenmorangie'});
-    var activity3 = new Activity({name:'Glenmorangie'});
+    var activity2 = new Activity({name:'Balvenie'});
+    var activity3 = new Activity({name:'Highland Park'});
     trip.addActivity(activity1);
     trip.addActivity(activity2);
     trip.addActivity(activity3);
@@ -67,7 +67,18 @@ describe('trip', function() {
     assert.equal(3, trip.numberOfActivities);
   });
 
-
+  it('should be able to get total cost of trip', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity1 = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    var activity2 = new Activity({name:'Balvenie', cost: 50, duration: 0.5});
+    var activity3 = new Activity({name:'Highland Park', cost: 50, duration: 0.5});
+    trip.addActivity(activity1);
+    trip.addActivity(activity2);
+    trip.addActivity(activity3);
+    trip.getNumberOfActivities()
+    assert.equal(3, trip.numberOfActivities);
+    assert.equal(150, trip.totalTripCost());
+  });
 
 
 

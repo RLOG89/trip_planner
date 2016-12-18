@@ -24,6 +24,15 @@ Trip.prototype = {
   getNumberOfActivities: function() {
     this.numberOfActivities = this.activities.length;
   },
+  totalTripCost: function() 
+    {
+        var total = 0;
+        for (var activity of this.activities)
+        {
+            total += activity.cost;
+        }
+        return total;
+    },
 
 }
 
