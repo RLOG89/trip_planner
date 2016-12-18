@@ -17,6 +17,11 @@ Trip.prototype = {
   addActivity: function(activity) {
     this.activities.push(activity);
   },
+  removeActivity: function(activity) {
+    this.activities.pop(activity);
+  },
+
+
 
 }
 
