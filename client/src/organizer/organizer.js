@@ -5,7 +5,7 @@ var Organizer = function() {
 Organizer.prototype = {
   addTrip: function(trip) {
     this.trips.push(trip);
-  }
+  },
 
 };
 

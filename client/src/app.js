@@ -59,8 +59,10 @@ var app = function() {
   };
 
   var mapDiv = document.getElementById('main-map');
+  var itineraryMapDiv = document.getElementById('itinerary-map');
   var startCoords = ({lat: 56.4907, lng: -4.2026});
   var newMap = new MapWrapper(mapDiv, startCoords, 6);
+  var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
 
   var populateList = function(categories, clear) {
     var list = document.getElementById('list');
@@ -71,52 +73,34 @@ var app = function() {
     newMap.deleteMarkers();
 
     categories.forEach(function(item) {
-
+      var spacer = document.createElement('p');
       var destination = document.createElement('li');
-      var checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.name = item.name;
-      checkbox.value = false;
-      checkbox.id = item.name;
+      var viewButton = document.createElement('button');
+      var addButton = document.createElement('button');
+      viewButton.innerHTML = 'view';
+      addButton.innerHTML = 'add to trip';
+      addButton.id = 'add-button';
+      viewButton.addEventListener ("click", function() {
+        var description = document.getElementById('description');
+        var image = document.createElement('img');
+        description.innerText =  item.name +', ' + item.location + '\n \n' + item.description + '\n \n';
+        image.id = 'description-pictures'
+        image.src = item.img;
+        image.height = '100px';
+        image.width = '100px';
+        description.appendChild(image);
+      });
 
       destination.innerText = item.name +', ' + item.location;
       list.appendChild(destination);
-      list.appendChild(checkbox);
+      list.appendChild(viewButton);
+      list.appendChild(addButton);
+      list.appendChild(spacer);
       itemCoords = {lat: item.lat, lng: item.lng};
       console.log(newMap);
-      // newMap.clearMarkers;
       newMap.addMarker(itemCoords, item.img, item.description);
     })
   };
-
 };
 
-
 window.onload = app;
-
-    //   populateList(sports);
-    //   populateList(movies);
-    //   populateList(historic);
-    // }
-  // var populateList = function(thing) {
-  //   var list = document.getElementById('list');
-  //   thing.forEach(function(item) {
-  //     var liName = document.createElement('li');
-  //     var liLocation = document.createElement('li');
-  //     var liDescription = document.createElement('li');
-  //     var liImg = document.createElement('img');
-  //     liName.innerText = item.name;
-  //     liLocation.innerText = item.location;
-  //     liDescription.innerText = item.description;
-  //     liImg.src = item.img;
-  //     list.appendChild(liName);
-  //     list.appendChild(liLocation);
-  //     list.appendChild(liDescription);
-  //     list.appendChild(liImg);
-  //   })
-  // };
-
-    // populateList(whisky);
-    // populateList(sports);
-    // populateList(movies);
-    // populateList(historic);
