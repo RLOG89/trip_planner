@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 var MongoClient = require('mongodb').MongoClient, 
 assert = require('assert');
+var ObjectID = MongoClient.ObjectID;
 
 var url = 'mongodb://localhost:27017/scotrip';
 
@@ -28,6 +29,13 @@ app.get('/trips', function(req,res) {
   });
 });
 
+// app.get('/trips/:id', function(req,res) {
+//   res.sendFile({id:req.params.id});
+//   MongoClient.connect(url, function(err, db) {
+//     collection.find({id.req.params.id})
+//   })
+// })
+
 app.post('/trips', function(req,res) {
   console.log('body', req.body);
   MongoClient.connect(url, function(err, db) {
@@ -44,6 +52,29 @@ app.post('/trips', function(req,res) {
         "number_of_activities": 0
       }
     );
+    res.status(200).end();
+    db.close();
+  });
+});
+
+app.get('/trips/:id/', function(req,res) {
+  // res.sendFile({id:req.params.id});
+  MongoClient.connect(url, function(err, db) {
+    var collection = db.collection('trips');
+    collection.findOne({_id: ObjectId(req.params.id)}, function(err, document) {
+      console.log(document.name);
+    });
+  })
+})
+
+app.put('/trips/:id', function(req,res) {
+  console.log('body', req.body);
+  MongoClient.connect(url, function(err, db) {
+    var collection = db.collection('trips');
+    collection.update(
+      {"_id": new ObjectID(req.params.id)}, 
+      {$push: {"activities": req.body.item.name}}
+      );
     res.status(200).end();
     db.close();
   });
