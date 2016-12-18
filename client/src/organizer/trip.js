@@ -14,6 +14,10 @@ Trip.prototype = {
     date2 = new Date(this.end_date); 
     this.duration = Math.round((date2-date1)/(1000*60*60*24))
   },
+  addActivity: function(activity) {
+    this.activities.push(activity);
+  },
+
 }
 
 module.exports = Trip;
