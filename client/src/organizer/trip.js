@@ -7,7 +7,8 @@ var Trip = function(params) {
   this.duration = 0;
   this.activities = [];
   this.numberOfActivities = 0;
-  this.startEndLocation = ""
+  this.startEndLocation = "";
+  this.completed = false;
 };
 
 Trip.prototype = {
@@ -31,8 +32,7 @@ Trip.prototype = {
         {
           if (activity.completed){ 
             total ++;
-          }
-        
+          }      
         }
       return total;
   },
@@ -43,7 +43,13 @@ Trip.prototype = {
             total += activity.cost;
         }
         return total;
-    },
+  },
+  checkCompleted: function() {
+    this.getNumberOfActivities();
+      if (this.numberOfActivities = this.getNumberOfActivitiesCompleted()){
+        this.completed = true;
+      };
+  },
 
 }
 
