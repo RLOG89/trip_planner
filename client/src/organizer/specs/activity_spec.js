@@ -14,4 +14,9 @@ describe('activity', function() {
     var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
     assert.equal(activity.duration, '0.5');
   });
+
+  it('should have a completed status default to false', function() {
+    var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    assert.equal(activity.completed, false);
+  });
 });
