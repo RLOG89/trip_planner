@@ -1,4 +1,5 @@
 var Trip = require('../trip');
+var Activity = require('../activity');
 var assert = require('assert');
 
 describe('trip', function() {
@@ -32,6 +33,61 @@ describe('trip', function() {
     trip.getDuration();
     assert.equal(trip.duration, 8);
   });
+
+  it('should start off with no activities ', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    assert.equal(0, trip.activities.length);
+  });
+
+  it('should be able to add activity', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    trip.addActivity(activity);
+    assert.deepEqual(activity, trip.activities[0]);
+  });
+
+  it('should be able to remove activity', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    trip.addActivity(activity);
+    assert.deepEqual(activity, trip.activities[0]);
+    trip.removeActivity(activity);
+    assert.equal(0, trip.activities.length);
+  });
+
+  it('should be able to get total number of activities', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity1 = new Activity({name:'Glenmorangie'});
+    var activity2 = new Activity({name:'Balvenie'});
+    var activity3 = new Activity({name:'Highland Park'});
+    trip.addActivity(activity1);
+    trip.addActivity(activity2);
+    trip.addActivity(activity3);
+    trip.getNumberOfActivities()
+    assert.equal(3, trip.numberOfActivities);
+  });
+
+  it('should be able to get total cost of trip', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity1 = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    var activity2 = new Activity({name:'Balvenie', cost: 50, duration: 0.5});
+    var activity3 = new Activity({name:'Highland Park', cost: 50, duration: 0.5});
+    trip.addActivity(activity1);
+    trip.addActivity(activity2);
+    trip.addActivity(activity3);
+    trip.getNumberOfActivities()
+    assert.equal(3, trip.numberOfActivities);
+    assert.equal(150, trip.totalTripCost());
+  });
+
+
+
+
+
+
+
+
+
 
 
 });

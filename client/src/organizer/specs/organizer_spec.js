@@ -14,4 +14,16 @@ describe('organizer', function() {
     organizer.addTrip(trip);
     assert.deepEqual(trip, organizer.trips[0]);
   });
+
+  it('should be able to remove trip', function() {
+    var organizer = new Organizer();
+    var trip = new Trip({name:'Distillery Tour 2016',owner:'Ross',budget:500});
+    organizer.addTrip(trip);
+    assert.deepEqual(trip, organizer.trips[0]);
+    organizer.removeTrip(trip);
+    assert.equal(0, organizer.trips.length);
+  });
+
+
+
 });
