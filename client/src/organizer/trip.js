@@ -7,6 +7,7 @@ var Trip = function(params) {
   this.duration = 0;
   this.activities = [];
   this.numberOfActivities = 0;
+  this.startEndLocation = ""
 };
 
 Trip.prototype = {
