@@ -6,6 +6,7 @@ var MapWrapper = require('./views/mapWrapper.js');
 var DbHelper = require('./helper/dbHelper.js');
 var Organizer = require('./organizer/organizer.js');
 var Trip = require('./organizer/trip.js');
+var url = "http://localhost:3000/trips"
 
 var app = function() {
 
@@ -14,15 +15,18 @@ var app = function() {
   var tripForm = document.querySelector('#trip-form');
   tripForm.onsubmit = function(e) {
     e.preventDefault();
+    location.href = "http://localhost:3000/destinations.html"
     var tripData = {
-      trip_name: document.querySelector("#name").value,
-      full_name: document.querySelector('#owner').value,
+      name: document.querySelector("#name").value,
+      owner: document.querySelector('#owner').value,
       budget: parseFloat(document.querySelector('#budget').value),
       start_date: document.querySelector('#start-date').value,
       end_date: document.querySelector('#end-date').value,
-      start_end_location: document.querySelector('#start-end-location').value
+      start_end_point: document.querySelector('#start-end-point').value
     };
+    console.log(tripData)
     var newTrip = new Trip(tripData);
+    console.log(newTrip)
     organizer.addTrip(newTrip);
 
     var request = new XMLHttpRequest();
@@ -33,6 +37,7 @@ var app = function() {
       }
     };
     request.send(JSON.stringify(tripData));
+
   };
 
 
