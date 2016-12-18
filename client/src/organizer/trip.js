@@ -25,8 +25,18 @@ Trip.prototype = {
   getNumberOfActivities: function() {
     this.numberOfActivities = this.activities.length;
   },
-  totalTripCost: function() 
-    {
+  getNumberOfActivitiesCompleted: function() {
+    var total = 0;
+      for (var activity of this.activities)
+        {
+          if (activity.completed){ 
+            total ++;
+          }
+        
+        }
+      return total;
+  },
+  totalTripCost: function() {
         var total = 0;
         for (var activity of this.activities)
         {
