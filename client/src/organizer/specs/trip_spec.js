@@ -55,6 +55,19 @@ describe('trip', function() {
     assert.equal(0, trip.activities.length);
   });
 
+  it('should be able to get total number of activities', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity1 = new Activity({name:'Glenmorangie'});
+    var activity2 = new Activity({name:'Glenmorangie'});
+    var activity3 = new Activity({name:'Glenmorangie'});
+    trip.addActivity(activity1);
+    trip.addActivity(activity2);
+    trip.addActivity(activity3);
+    trip.getNumberOfActivities()
+    assert.equal(3, trip.numberOfActivities);
+  });
+
+
 
 
 

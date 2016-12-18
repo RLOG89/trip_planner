@@ -6,6 +6,7 @@ var Trip = function(params) {
   this.end_date = params.end_date;
   this.duration = 0;
   this.activities = [];
+  this.numberOfActivities = 0;
 };
 
 Trip.prototype = {
@@ -20,8 +21,9 @@ Trip.prototype = {
   removeActivity: function(activity) {
     this.activities.pop(activity);
   },
-
-
+  getNumberOfActivities: function() {
+    this.numberOfActivities = this.activities.length;
+  },
 
 }
 
