@@ -10,6 +10,7 @@ var Trip = function(params) {
   this.numberOfActivities = 0;          // number of activities in the array
   this.startEndLocation = "";           // the start/end point of the trip as a String
   this.completed = false;               // trip completed status if all activities are complete
+  this.inBudget = true;                 // trip in buget status
 };
 
 Trip.prototype = {
@@ -84,6 +85,12 @@ Trip.prototype = {
          total += activity.cost;
       }
       this.cost = total;
+      if (this.cost > this.budget) {
+        this.inBudget = false;
+      }
+      else{
+        this.inBudget = true;
+      }
       return total;
   },
   checkCompleted: function() {
