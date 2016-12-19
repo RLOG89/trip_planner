@@ -6,10 +6,10 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
-var MongoClient = require('mongodb').MongoClient, 
+var mongodb = require('mongodb');
+var MongoClient = mongodb.MongoClient, 
 assert = require('assert');
-var ObjectID = MongoClient.ObjectID;
+var ObjectId = mongodb.ObjectID;
 
 var url = 'mongodb://localhost:27017/scotrip';
 
@@ -40,7 +40,7 @@ app.post('/trips', function(req,res) {
   console.log('body', req.body);
   MongoClient.connect(url, function(err, db) {
     var collection = db.collection('trips');
-    collection.insert(
+    collection.insertOne(
       { "name": req.body.name,
         "owner": req.body.owner,
         "budget": req.body.budget,
@@ -50,10 +50,12 @@ app.post('/trips', function(req,res) {
         "duration": 0,
         "activities": [],
         "number_of_activities": 0
+      }, function(err, newTrip){
+        res.status(200).send(newTrip.insertedId);
+        db.close();
       }
     );
-    res.status(200).end();
-    db.close();
+
   });
 });
 
@@ -63,6 +65,8 @@ app.get('/trips/:id/edit', function(req,res) {
     var collection = db.collection('trips');
     collection.findOne({_id: ObjectId(req.params.id)}, function(err, document) {
       console.log(document.name);
+      res.status(200).send(document);
+      db.close();
     });
   })
 })
