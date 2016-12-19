@@ -5,7 +5,8 @@
   <title>ScotTrip</title>
   <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="main.css">
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfJV1XuCKEGFFU8Fk7XPUVwBsJQHMxyFw"></script>
+
   <script src='bundle.js'></script>
 </head>
 
@@ -15,19 +16,31 @@
 
     <table style="width:50%">
       <tr><td id='mTitle'><h2>ScotTrip</h2></td>
-        <td id='mIndex'><a href="index.html">Home</a></td> 
-        <td id='mDestinations'><a href="destinations.html">Select Destinations</a></td>
-        <td id='mItinerary'><a href="itinerary.html">Itinerary</a></td>
+        <td id='mIndex'><button id='index-button' type="submit" name="index" value="value">Home</button></td> 
+        <td id='mDestinations'><button id='destination-button' type="submit" name="destinations" value="value">Destinations</button></td>
+        <td id='mItinerary'><button id='itinerary-button' type="submit" name="itinerary" value="value">My Trip</button></td>
       </tr>
 
     </div>
-    <div id="container">
+    <div id="container-index">
 
 
       <div id="about">
 
         <h2>Welcome!</h2>
-        <p>ScotTrip is a thing you can use to plan trips in Scotland.</p>
+        <p>Welcome to the all new ScotTrip Planner, which has been designed to make it easier for you to plan your Scotland trip, get cost estimates and work out your travel mileage. <br><br>
+
+          To improve how you find out about activities along your route we have developed a separate section which gives you the ability to create and plan a trip and add them and save them to an itinerary.<br><br>
+
+          The route finder service provides maps and driving directions for the Scotland, as well as giving you the opportunity to find distilleries, movie locations, Historic sites and sporting venues.<br><br>
+
+          ScotTrip is always looking for new ways to help you plan your journey.<br><br>
+
+          A massive thanks from the ScotTrip team for visiting and please spread the word.
+        </p><br><br>
+
+
+        <p id="copyright"> copyright 2016 - Team Ping Poke - All rights reserved </p>
 
       </div>
 
@@ -40,21 +53,25 @@
       <div id="form">
 
         <h2>Sign Up</h2>
-        <form>
+        <form id="trip-form">
+          User name:<br>
+          <input type='text' id='user-name'><br>
+          Password:<br>
+          <input type='password' id='password'><br>
           Name your trip:<br>
-          <input type="text" name="firstname"><br>
+          <input type="text" id="name"><br>
           Full name:<br>
-          <input type="text" name="fullname"><br>
+          <input type="text" id="owner"><br>
           Budget:<br>
-          <input type="number" name="lastname"><br>
+          <input type="number" id="budget"><br>
           Start date:<br>
-          <input type="date" name="startdate"><br>
+          <input type="date" id="start-date"><br>
           End date:<br>
-          <input type="date" name="enddate"><br>
+          <input type="date" id="end-date"><br>
           Start/end location:<br>
-          <input type="text" name="startendpoint"><br>
+          <input type="text" id="start-end-point"><br>
           <br>
-          <button type="submit" name="id" value="value">Submit</button>
+          <button type="submit" id="submit-trip" value="value">Submit</button>
         </form>
         <!-- <div id="password-container">
           <div id="password-header">
@@ -72,13 +89,56 @@
         Full name:<br>
         <input type="text" name="fullname"><br>
         <br>
-        <button type="submit" name="id" value="value">Submit</button>
+        <button type="submit" name="id" value="value" onclick="validate()">Submit</button>
         <h2>Log Out</h2>
         <button type="logout" name="logout" value="logout">Log Out</button>
-
       </div>
 
     </div>
+
+    <div id="container-itinerary">
+
+      <div id="itinerary-map"></div>
+
+      <div id="itinerary">
+        <h2>Your Trip</h2>
+        <a href="mailto:">email trip</a>
+        <p></p>
+        <p id='route-description'></p>
+      </div>
+
+    </div>
+
+    <div id="container-destination">
+
+      <div id="destinations">
+        <p>Here are some tempting destination activities to explore:</p>
+        <div id="list-container">
+
+
+          <button id="distilleries">Distilleries</button>
+          <button id="sports">Sports</button>
+          <button id="movies">Movie Locations</button>
+          <button id="historic">Historical Sites</button>
+        </div>
+        <form>
+          <ul id="list"></ul>
+        </form>
+        
+      </div>
+
+      <div id="main-map"></div>
+
+      <div id="descriptions">
+        <p id='description'></p>
+      </div>
+    </div>
+
   </body>
+<<<<<<< HEAD
   </html>
+>>>>>>> master
+=======
+</body>
+</html>
 >>>>>>> master

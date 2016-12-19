@@ -1,4 +1,5 @@
 var Trip = require('../trip');
+var Activity = require('../activity');
 var assert = require('assert');
 
 describe('trip', function() {
@@ -32,6 +33,125 @@ describe('trip', function() {
     trip.getDuration();
     assert.equal(trip.duration, 8);
   });
+
+  it('should start off with no activities ', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    assert.equal(0, trip.activities.length);
+  });
+
+  it('should be able to add activity', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    trip.addActivity(activity);
+    assert.deepEqual(activity, trip.activities[0]);
+  });
+
+  it('should be able to remove activity', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    trip.addActivity(activity);
+    assert.deepEqual(activity, trip.activities[0]);
+    trip.removeActivity(activity);
+    assert.equal(0, trip.activities.length);
+  });
+
+  it('should be able to get total number of activities', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity1 = new Activity({name:'Glenmorangie'});
+    var activity2 = new Activity({name:'Balvenie'});
+    var activity3 = new Activity({name:'Highland Park'});
+    trip.addActivity(activity1);
+    trip.addActivity(activity2);
+    trip.addActivity(activity3);
+    trip.getNumberOfActivities()
+    assert.equal(3, trip.numberOfActivities);
+  });
+
+  it('should be able to get total number of activities completed', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity1 = new Activity({name:'Glenmorangie'});
+    var activity2 = new Activity({name:'Balvenie'});
+    var activity3 = new Activity({name:'Highland Park'});
+    trip.addActivity(activity1);
+    trip.addActivity(activity2);
+    trip.addActivity(activity3);
+    trip.getNumberOfActivities()
+    activity1.setCompleted();
+    assert.equal(3, trip.numberOfActivities);
+    assert.equal(1, trip.getNumberOfActivitiesCompleted());
+  });
+
+  it('should be able to get total cost of trip', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity1 = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    var activity2 = new Activity({name:'Balvenie', cost: 50, duration: 0.5});
+    var activity3 = new Activity({name:'Highland Park', cost: 50, duration: 0.5});
+    trip.addActivity(activity1);
+    trip.addActivity(activity2);
+    trip.addActivity(activity3);
+    trip.getNumberOfActivities()
+    assert.equal(3, trip.numberOfActivities);
+    assert.equal(150, trip.totalTripCost());
+  });
+
+  it('should be able to check budget against cost of trip (over budget)', function() {
+    var trip = new Trip({name:'Distillery Tour 2016',name:'Distillery Tour 2016',owner:'Ross',budget:100});
+    var activity1 = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    var activity2 = new Activity({name:'Balvenie', cost: 50, duration: 0.5});
+    var activity3 = new Activity({name:'Highland Park', cost: 50, duration: 0.5});
+    trip.addActivity(activity1);
+    trip.addActivity(activity2);
+    trip.addActivity(activity3);
+    trip.getNumberOfActivities()
+    assert.equal(3, trip.numberOfActivities);
+    assert.equal(150, trip.totalTripCost());
+    assert.equal(false, trip.inBudget)
+  });
+
+  it('should be able to check budget against cost of trip (in budget)', function() {
+    var trip = new Trip({name:'Distillery Tour 2016',name:'Distillery Tour 2016',owner:'Ross',budget:500});
+    var activity1 = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    var activity2 = new Activity({name:'Balvenie', cost: 50, duration: 0.5});
+    var activity3 = new Activity({name:'Highland Park', cost: 50, duration: 0.5});
+    trip.addActivity(activity1);
+    trip.addActivity(activity2);
+    trip.addActivity(activity3);
+    trip.getNumberOfActivities()
+    assert.equal(3, trip.numberOfActivities);
+    assert.equal(150, trip.totalTripCost());
+    assert.equal(true, trip.inBudget)
+  });
+
+  it('should be able to check if trip is completed', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    var activity1 = new Activity({name:'Glenmorangie'});
+    var activity2 = new Activity({name:'Balvenie'});
+    var activity3 = new Activity({name:'Highland Park'});
+    trip.addActivity(activity1);
+    trip.addActivity(activity2);
+    trip.addActivity(activity3);
+    trip.getNumberOfActivities()
+    activity1.setCompleted();
+    activity2.setCompleted();
+    activity3.setCompleted();
+    assert.equal(3, trip.numberOfActivities);
+    assert.equal(3, trip.getNumberOfActivitiesCompleted());
+    trip.checkCompleted();
+    assert.equal(true, trip.completed);
+  });
+
+
+  it('should convert kilometers to miles ', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    trip.distanceKm = 1
+    trip.getMiles()
+    assert.equal(1.6, trip.distanceMiles);
+  });
+
+
+
+
+
 
 
 });

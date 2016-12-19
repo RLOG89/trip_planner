@@ -1,0 +1,41 @@
+[{
+  "name": "Trip to North",
+  "owner": "Ross",
+  "budget": 100,
+  "start_date": "12/12/16",
+  "end_date": "14/12/16",
+  "activities": [{
+  "lat": 56.346025, 
+  "lng": -2.802696,
+  "sport": "Golf",
+  "location": "St. Andrews",
+  "name": "The Old Course",
+  "description": "The oldest and most iconic golf course in the world. The Swilcan Bridge and Hell Bunker are recognised across the globe, yet the greatest feature of the Old Course is that despite its grand status it remains a public golf course, open to all.",
+  "img": "/images/the_old_course.jpg"
+},
+{
+  "lat": 55.8627, 
+  "lng": -4.2311,
+  "name": "The Necropolis",
+  "location": "Glasgow",
+  "description": "The Glasgow Necropolis is a Victorian cemetery in Glasgow, Scotland. It is on a low but very prominent hill to the east of Glasgow Cathedral (St. Mungo's Cathedral). Fifty thousand individuals have been buried here. Typically for the period only a small percentage are named on monuments and not every grave has a stone. Approximately 3500 monuments exist here.",
+  "img": "/images/necropolis_glasgow.jpg"
+},
+{
+  "name": "Local Hero",
+  "location": "Pennan",
+  "lat": 57.6774,
+  "lng": -2.2600,
+  "description": "An American oil company sends a man to Scotland to buy up an entire village where they want to build a refinery. But things don't go as expected",
+  "img": "/images/local_hero.jpg"
+},
+{
+  "name":         "Balvenie",
+  "location":     "Dufftown",
+  "region":       "Speyside",
+  "lat":          57.458685,
+  "lng":          -3.127234,
+  "description":  "The Balvenie distillery is a Speyside single malt Scotch whisky distillery in Dufftown, Scotland, owned by William Grant & Sons.",
+  "img":          "/images/balvenie.png"
+}]
+}]
