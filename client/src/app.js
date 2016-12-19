@@ -8,7 +8,16 @@ var Organizer = require('./organizer/organizer.js');
 var Trip = require('./organizer/trip.js');
 var url = "http://localhost:3000/trips"
 
-var app = function() {
+
+var containerIndex = getElementById('container-index');
+var containerDestination = getElementById('container-destination');
+var containerItinerary = getElementById('container-itinerary') 
+var indexButton = getElementById('index-button');
+indexButton.onclick = function() {
+
+}
+
+// var app = function() {
 //WORKS BUT WONT LOAD SECOND PAGE
   // var organizer = new Organizer();
 
@@ -29,14 +38,14 @@ var app = function() {
   //   console.log(newTrip)
   //   organizer.addTrip(newTrip);
 
-    // var request = new XMLHttpRequest();
-    // request.open("POST", url);
-    // request.setRequestHeader("Content-Type", "application/json");
-    // request.onload = function() {
-    //   if(request.status === 200) {
-    //   }
-    // };
-    // request.send(JSON.stringify(tripData));
+  //   var request = new XMLHttpRequest();
+  //   request.open("POST", url);
+  //   request.setRequestHeader("Content-Type", "application/json");
+  //   request.onload = function() {
+  //     if(request.status === 200) {
+  //     }
+  //   };
+  //   request.send(JSON.stringify(tripData));
 
   // };
 
@@ -100,16 +109,16 @@ var app = function() {
   var newMap = new MapWrapper(mapDiv, startCoords, 6);
   // var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
 
-  var fetchAccount = function() {
-    var url = "http://localhost:3000/trips/5856bd3a44e40b7a2b03c3eb"
-    request.open("GET", url);
-        request.onload = function() {
-          if(request.status === 200) {
-          }
-        };
-        console.log('hello')
-        // request.send()
-  }
+  // var fetchAccount = function() {
+  //   var url = "http://localhost:3000/trips/5856bd3a44e40b7a2b03c3eb"
+  //   request.open("GET", url);
+  //       request.onload = function() {
+  //         if(request.status === 200) {
+  //         }
+  //       };
+  //       console.log('hello')
+  //       // request.send()
+  // }
 
   var trip = new Trip({
     name: "Trip of Life",

@@ -11,21 +11,20 @@ var Trip = function(params) {
 };
 
 Trip.prototype = {
-  fetchTrip: function() {
+  // fetchTrip: function() {
 
-  }
+  // }
   getDuration: function() {
     date1 = new Date(this.start_date);  
     date2 = new Date(this.end_date); 
     this.duration = Math.round((date2-date1)/(1000*60*60*24))
   },
-  fi
   addActivity: function(activity) {
     console.log('I was called')
     var url = 'http://localhost:3000/trips/';
     this.activities.push(activity);
     var request = new XMLHttpRequest();
-    request.open("POST", url);
+    request.open("PUT", url);
     request.setRequestHeader("Content-Type", "application/json");
     request.onload = function() {
       if(request.status === 200) {

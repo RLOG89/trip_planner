@@ -57,7 +57,7 @@ app.post('/trips', function(req,res) {
   });
 });
 
-app.get('/trips/:id/', function(req,res) {
+app.get('/trips/:id/edit', function(req,res) {
   // res.sendFile({id:req.params.id});
   MongoClient.connect(url, function(err, db) {
     var collection = db.collection('trips');
