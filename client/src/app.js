@@ -21,6 +21,8 @@ var _id = "";
       containerDestination.style.visibility = 'visible';
       containerItinerary.style.visibility = 'hidden';
       var tripData = {
+        user_name: document.querySelector('#user-name').value,
+        password: document.querySelector('#password').value,
         name: document.querySelector("#name").value,
         owner: document.querySelector('#owner').value,
         budget: parseFloat(document.querySelector('#budget').value),
