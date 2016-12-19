@@ -51,6 +51,33 @@ indexButton.onclick = function() {
 
 
 
+  var containerIndex = document.getElementById('container-index');
+  var containerDestination = document.getElementById('container-destination');
+  var containerItinerary = document.getElementById('container-itinerary') 
+  var indexButton = document.getElementById('index-button');
+  var destinationButton = document.getElementById('destination-button')
+  var itineraryButton = document.getElementById('itinerary-button')
+  indexButton.onclick = function() {
+    console.log('working')
+    containerIndex.style.visibility = 'visible';
+    containerDestination.style.visibility = 'hidden';
+    containerItinerary.style.visibility = 'hidden';
+  }
+  destinationButton.onclick = function() {
+    console.log('working')
+
+    containerIndex.style.visibility = 'hidden';
+    containerDestination.style.visibility = 'visible';
+    containerItinerary.style.visibility = 'hidden';
+  }
+  itineraryButton.onclick = function() {
+    console.log('working')
+
+    containerIndex.style.visibility = 'hidden';
+    containerDestination.style.visibility = 'hidden';
+    containerItinerary.style.visibility = 'visible';
+  }
+
   var whiskyButton = document.getElementById('distilleries');
   var whiskyActive = false;
   whiskyButton.onclick = function() {
@@ -132,6 +159,8 @@ indexButton.onclick = function() {
     number_of_activities: 0
   });
 
+  var startCoords = ({lat: 56.4907, lng: -4.2026});
+  var newMap = new MapWrapper(mapDiv, startCoords, 6);
   var populateList = function(categories, clear) {
     var list = document.getElementById('list');
     list.innerHTML = "";

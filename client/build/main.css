@@ -30,7 +30,7 @@ img {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: hidden;
   color: white;
   background-color: #856367;
   padding-top: 5px;
@@ -40,7 +40,30 @@ a {
   border-radius: 5px;
 }
 
-#container {
+#container-index {
+  visibility: visible;
+  width: 1230px;
+  height: 630px;
+  margin-top: 70px;
+  margin-left: 0px;
+  background-color: #939dad;
+  position: fixed;
+  border-radius: 10px;
+}
+
+#container-destination {
+  visibility: hidden;
+  width: 1230px;
+  height: 630px;
+  margin-top: 70px;
+  margin-left: 0px;
+  background-color: #939dad;
+  position: fixed;
+  border-radius: 10px;
+}
+
+#container-itinerary {
+  visibility: hidden;
   width: 1230px;
   height: 630px;
   margin-top: 70px;
