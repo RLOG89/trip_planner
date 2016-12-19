@@ -3,7 +3,6 @@ var sports = require('../api/sports.js');
 var movies = require('../api/movies.js');
 var historic = require('../api/historic.js');
 var MapWrapper = require('./views/mapWrapper.js');
-// var DbHelper = require('./helper/dbHelper.js');
 var Organizer = require('./organizer/organizer.js');
 var Trip = require('./organizer/trip.js');
 var ajaxHelper = require('./helper/ajaxHelper.js');
