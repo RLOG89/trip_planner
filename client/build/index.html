@@ -16,13 +16,13 @@
 
     <table style="width:50%">
       <tr><td id='mTitle'><h2>ScotTrip</h2></td>
-        <td id='mIndex'><a href="index.html">Home</a></td> 
-        <td id='mDestinations'><a href="destinations.html">Select Destinations</a></td>
-        <td id='mItinerary'><a href="itinerary.html">Itinerary</a></td>
+        <td id='mIndex'><button id='index-button' type="submit" name="index" value="value">Home</button></td> 
+        <td id='mDestinations'><button id='destination-button' type="submit" name="destinations" value="value">Destinations</button></td>
+        <td id='mItinerary'><button id='itinerary-button' type="submit" name="itinerary" value="value">My Trip</button></td>
       </tr>
 
     </div>
-    <div id="container">
+    <div id="container-index">
 
 
       <div id="about">
@@ -68,5 +68,41 @@
       </div>
 
     </div>
+
+    <div id="container-itinerary">
+
+    <div id="itinerary-map"></div>
+
+    <div id="itinerary">
+    <h2>Your Trip</h2>
+      <p></p>
+    </div>
+
+    </div>
+
+      <div id="container-destination">
+
+        <div id="destinations">
+          <br>
+          <div id="list-container">
+            <button id="distilleries">Distilleries</button>
+            <button id="sports">Sports</button>
+            <button id="movies">Movie Locations</button>
+            <button id="historic">Historical Sites</button>
+          </div>
+          <form>
+            <ul id="list"></ul>
+          </form>
+          
+        </div>
+
+        <div id="main-map"></div>
+
+        <div id="descriptions">
+          <p id='description'></p>
+        </div>
+      </div>
+
+    </body>
   </body>
   </html>
