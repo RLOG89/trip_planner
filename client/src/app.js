@@ -137,7 +137,44 @@ var app = function() {
       map.addItineraryMarker(destinationCoords, destination.name);
     }
   };
+
   populateItineraryMap(itineraryMap, exampleItinerary);
-};
+
+  var directionsService = new google.maps.DirectionsService();
+
+  var tripWaypoints = [{location: 'Balvenie, Dufftown', stopover: true}, {location: 'Highland Park, Kirkwall', stopover: true}];
+  
+
+  var request = {
+    origin: 'Emirates Arena, Glasgow',
+    waypoints: tripWaypoints,
+    optimizeWaypoints: true,
+    destination: "Murrayfield, Edinburgh",
+    travelMode: "DRIVING"
+  };
+
+  var directionsDisplay = new google.maps.DirectionsRenderer();
+
+  directionsDisplay.setMap(itineraryMap.map);
+
+  directionsService.route(request, function(response, status) {
+    if (status == 'OK') {
+      directionsDisplay.setDirections(response);
+      console.log(response)
+      var route = response.routes[0];
+      var routeDescription = document.getElementById('route-description');
+      routeDescription.innerHTML = '';
+      for (var i = 0; i < route.legs.length; i++) {
+        var routeSegment = i + 1;
+        routeDescription.innerHTML += 'Day ' + routeSegment + '<br>';
+        routeDescription.innerHTML += route.legs[i].start_address + ' to ';
+        routeDescription.innerHTML += route.legs[i].end_address + '<br>';
+        routeDescription.innerHTML += route.legs[i].distance.text + '<br><br>'
+      }
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
 
 window.onload = app;
