@@ -141,7 +141,12 @@ describe('trip', function() {
   });
 
 
-
+  it('should convert kilometers to miles ', function() {
+    var trip = new Trip({name:'Distillery Tour 2016'});
+    trip.distanceKm = 1
+    trip.getMiles()
+    assert.equal(1.6, trip.distanceMiles);
+  });
 
 
 

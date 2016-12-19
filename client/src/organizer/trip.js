@@ -11,6 +11,8 @@ var Trip = function(params) {
   this.startEndLocation = "";           // the start/end point of the trip as a String
   this.completed = false;               // trip completed status if all activities are complete
   this.inBudget = true;                 // trip in buget status
+  this.distanceKm = 0;
+  this.distanceMiles = 0;
 };
 
 Trip.prototype = {
@@ -58,6 +60,9 @@ Trip.prototype = {
       if (this.numberOfActivities = this.getNumberOfActivitiesCompleted()){
         this.completed = true;
       };
+  },
+  getMiles: function() {
+    this.distanceMiles = this.distanceKm * 1.6;
   },
 }
 module.exports = Trip;
