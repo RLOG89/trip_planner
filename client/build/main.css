@@ -133,6 +133,11 @@ input {
   font-size: 14px;
 }
 
+#copyright {
+  font-size: 12px;
+
+}
+
 #main-map {
   position: relative;
   top: 15px;
