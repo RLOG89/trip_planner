@@ -16,16 +16,41 @@ var Trip = function(params) {
 };
 
 Trip.prototype = {
+  // fetchTrip: function() {
+
+  // }
   getDuration: function() {
     date1 = new Date(this.start_date);  
     date2 = new Date(this.end_date); 
     this.duration = Math.round((date2-date1)/(1000*60*60*24))
   },
-  addActivity: function(activity) {
+  addActivity: function(id, activity) {
+    console.log('I was called', id, activity);
+    var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
     this.activities.push(activity);
+    var request = new XMLHttpRequest();
+    request.open("PUT", url);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onload = function() {
+      if(request.status === 200) {
+      }
+    };
+    console.log("Trip:", this)
+    request.send(JSON.stringify(this));
   },
   removeActivity: function(activity) {
-    this.activities.pop(activity);
+    // console.log('I was called', id, activity);
+    //     var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
+    //     this.activities.pop(activity);
+    //     var request = new XMLHttpRequest();
+    //     request.open("PUT", url);
+    //     request.setRequestHeader("Content-Type", "application/json");
+    //     request.onload = function() {
+    //       if(request.status === 200) {
+    //       }
+    //     };
+    //     console.log("Trip:", this)
+    //     request.send(JSON.stringify(this));
   },
   getNumberOfActivities: function() {
     this.numberOfActivities = this.activities.length;

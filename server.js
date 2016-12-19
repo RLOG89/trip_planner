@@ -1,16 +1,85 @@
 var express = require('express');
 var app = express();
 var path = require('path');
+var bodyParser = require('body-parser');
+  
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+var mongodb = require('mongodb');
+var MongoClient = mongodb.MongoClient, 
+assert = require('assert');
+var ObjectId = mongodb.ObjectID;
+
+var url = 'mongodb://localhost:27017/scotrip';
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
+app.get('/trips', function(req,res) {
+  MongoClient.connect(url, function(err, db) {
+    var collection = db.collection('trips');
+    collection.find({}).toArray(function(err, docs) {
+      res.json(docs);
+      db.close();
+    });
+  });
+});
+
+app.post('/trips', function(req,res) {
+  console.log('body', req.body);
+  MongoClient.connect(url, function(err, db) {
+    var collection = db.collection('trips');
+    collection.insertOne(
+      { "name": req.body.name,
+        "owner": req.body.owner,
+        "budget": req.body.budget,
+        "start_date": req.body.start_date,
+        "end_date": req.body.end_date,
+        "start_end_point": req.body.start_end_point,
+        "duration": 0,
+        "activities": [],
+        "number_of_activities": 0
+      }, function(err, newTrip){
+        res.status(200).send(newTrip.insertedId);
+        db.close();
+      }
+    );
+
+  });
+});
+
+app.get('/trips/:id/edit', function(req,res) {
+  // res.sendFile({id:req.params.id});
+  MongoClient.connect(url, function(err, db) {
+    var collection = db.collection('trips');
+    collection.findOne({_id: ObjectId(req.params.id)}, function(err, document) {
+      console.log(document.name);
+      res.status(200).send(document);
+      db.close();
+    });
+  })
+})
+
+app.put('/trips/:id', function(req,res) {
+  console.log('body', req.body);
+  MongoClient.connect(url, function(err, db) {
+    var collection = db.collection('trips');
+    collection.update(
+      {"_id": new ObjectId(req.params.id)}, 
+      {$set: {"activities": req.body.activities}}
+      );
+    res.status(200).end();
+    db.close();
+  });
+});
+
 app.use(express.static('client/build'));
+
 
 var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
 
-  console.log('Example app listening at http://%s:%s', host, port);
 });
