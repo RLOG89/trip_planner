@@ -1,5 +1,6 @@
 var MapWrapper = function(container, coords, zoom) {
-  this.markers = []
+  this.markers = [];
+  this.itineraryMarkers = [];
   this.map = new google.maps.Map(container, {
     center: coords,
     zoom: zoom
@@ -35,8 +36,23 @@ MapWrapper.prototype = {
   deleteMarkers: function() {
     this.clearMarkers();
     this.markers = [];
+  },
+
+  addItineraryMarker: function(coords, name) {
+    var marker = new google.maps.Marker({
+      position: coords,
+      map: this.map,
+      animation: google.maps.Animation.DROP
+    });
+    var infowindow = new google.maps.InfoWindow({
+      content: name
+    });
+    marker.addListener('click', function() {
+      infowindow.open(this, marker);
+    })
+    this.itineraryMarkers.push(marker);
   }
 
-};
+}
 
 module.exports = MapWrapper;

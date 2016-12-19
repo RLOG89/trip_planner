@@ -125,8 +125,19 @@ var app = function() {
       newMap.addMarker(itemCoords, item.img, item.description);
     })
   };
+
+  var exampleItinerary = [{lat: 55.947149, lng: -3.170776, name: 'Edinburgh Town'}, {lat: 55.873876, lng: -4.252041, name: 'Glasgow Town'}];
+
   var itineraryMapDiv = document.getElementById('itinerary-map');
-  var itineraryMap = MapWrapper(itineraryMapDiv, startCoords, 6);
+  var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
+
+  var populateItineraryMap = function(map, itinerary) {
+    for (destination of itinerary) {
+      destinationCoords = {lat: destination.lat, lng: destination.lng};
+      map.addItineraryMarker(destinationCoords, destination.name);
+    }
+  };
+  populateItineraryMap(itineraryMap, exampleItinerary);
 };
 
 window.onload = app;
