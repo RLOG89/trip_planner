@@ -13,11 +13,9 @@ var ObjectId = mongodb.ObjectID;
 
 var url = 'mongodb://localhost:27017/scotrip';
 
-
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
-
 
 app.get('/trips', function(req,res) {
   MongoClient.connect(url, function(err, db) {
@@ -28,13 +26,6 @@ app.get('/trips', function(req,res) {
     });
   });
 });
-
-// app.get('/trips/:id', function(req,res) {
-//   res.sendFile({id:req.params.id});
-//   MongoClient.connect(url, function(err, db) {
-//     collection.find({id.req.params.id})
-//   })
-// })
 
 app.post('/trips', function(req,res) {
   console.log('body', req.body);
@@ -76,8 +67,8 @@ app.put('/trips/:id', function(req,res) {
   MongoClient.connect(url, function(err, db) {
     var collection = db.collection('trips');
     collection.update(
-      {"_id": new ObjectID(req.params.id)}, 
-      {$push: {"activities": req.body.item.name}}
+      {"_id": new ObjectId(req.params.id)}, 
+      {$set: {"activities": req.body.activities}}
       );
     res.status(200).end();
     db.close();
@@ -92,48 +83,3 @@ var server = app.listen(3000, function () {
   var port = server.address().port;
 
 });
-
-// xxxxxxxxxxx
-
-// var express = require('express');
-// var app = express();
-// var path = require('path');
-// var bodyParser = require('body-parser');
-
-// app.use(bodyParser.json());
-
-
-//   , assert = require('assert');
-
-// // Connection URL
-
-// app.get('/', function (req, res) {
-//   res.sendFile(path.join(__dirname + '/client/build/index.html'));
-// });
-
-
-
-// app.post('/accounts', function(req,res) {
-//   console.log('body', req.body);
-//   MongoClient.connect(url, function(err, db) {
-//     var collection = db.collection('accounts');
-//     collection.insert(
-//       { "owner": req.body.owner,
-//         "amount": req.body.amount,
-//         "type": req.body.type
-//       }
-//     );
-//     res.status(200).end();
-//     db.close();
-//   });
-// });
-
-// app.use(express.static('client/build'));
-
-
-// var server = app.listen(3000, function () {
-//   var host = server.address().address;
-//   var port = server.address().port;
-
-//   console.log('Example app listening at http://%s:%s', host, port);
-// });

@@ -8,7 +8,8 @@ var Organizer = require('./organizer/organizer.js');
 var Trip = require('./organizer/trip.js');
 var ajaxHelper = require('./helper/ajaxHelper.js');
 var url = "http://localhost:3000/trips";
- 
+var _id = "";
+
   var app = function() {
 
     var organizer = new Organizer();
@@ -16,7 +17,7 @@ var url = "http://localhost:3000/trips";
     var tripForm = document.querySelector('#trip-form');
     tripForm.onsubmit = function(e) {
       e.preventDefault();
-      //FIX LATER, NEED TO CALL A FUNCTION
+      // FIX LATER, NEED TO CALL A FUNCTION
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'visible';
       containerItinerary.style.visibility = 'hidden';
@@ -28,22 +29,15 @@ var url = "http://localhost:3000/trips";
         end_date: document.querySelector('#end-date').value,
         start_end_point: document.querySelector('#start-end-point').value
       };
-      var newTrip = new Trip(tripData);
+      newTrip = new Trip(tripData);
       organizer.addTrip(newTrip);
 
       ajaxHelper.makePostRequest(url, tripData, function(id){
         console.log("data:", id);
-        ajaxHelper.makeGetRequest("http://localhost:3000/trips/" + id.replace(/"/g, '') + "/edit", tripData, cb);
+        _id = id;
+        // ajaxHelper.makeGetRequest("http://localhost:3000/trips/" + id.replace(/"/g, '') + "/edit", tripData, cb);
       })
      
-     var cb = function(data){
-      console.log("got data", data);
-      //show container-destination
-
-
-
-     }
-
     };
 
     var containerIndex = document.getElementById('container-index');
@@ -154,7 +148,9 @@ var url = "http://localhost:3000/trips";
           image.width = '100px';
           description.appendChild(image);
         });
-
+        addButton.addEventListener ("click", function() {
+          newTrip.addActivity(_id, item.name)
+        })
         destination.innerText = item.name +', ' + item.location;
         list.appendChild(destination);
         list.appendChild(viewButton);
@@ -167,7 +163,6 @@ var url = "http://localhost:3000/trips";
     };
     var itineraryMapDiv = document.getElementById('itinerary-map');
     var itineraryMap = MapWrapper(itineraryMapDiv, startCoords, 6);
-  };
 
   var exampleItinerary = [{lat: 55.947149, lng: -3.170776, name: 'Edinburgh Town'}, {lat: 55.873876, lng: -4.252041, name: 'Glasgow Town'}];
 

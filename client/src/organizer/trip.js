@@ -22,9 +22,9 @@ Trip.prototype = {
     date2 = new Date(this.end_date); 
     this.duration = Math.round((date2-date1)/(1000*60*60*24))
   },
-  addActivity: function(activity) {
-    console.log('I was called')
-    var url = 'http://localhost:3000/trips/';
+  addActivity: function(id, activity) {
+    console.log('I was called', id, activity);
+    var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
     this.activities.push(activity);
     var request = new XMLHttpRequest();
     request.open("PUT", url);
@@ -33,40 +33,25 @@ Trip.prototype = {
       if(request.status === 200) {
       }
     };
-    console.log(this)
+    console.log("Trip:", this)
     request.send(JSON.stringify(this));
   },
   removeActivity: function(activity) {
-    this.activities.pop(activity);
-    // app.post('/trips', function(req,res) {
-    //   console.log('body', req.body);
-    //   MongoClient.connect(url, function(err, db) {
-    //     var collection = db.collection('trips');
-    //     collection.update(
-    //       db.trips.update({name: tripName},
-    //         {$pull: {activities: {
-    //           "name": activity.name,
-    //         }}})
-    //       );
-    //     res.status(200).end();
-    //     db.close();
-    //   });
-    // });
+    // console.log('I was called', id, activity);
+    //     var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
+    //     this.activities.pop(activity);
+    //     var request = new XMLHttpRequest();
+    //     request.open("PUT", url);
+    //     request.setRequestHeader("Content-Type", "application/json");
+    //     request.onload = function() {
+    //       if(request.status === 200) {
+    //       }
+    //     };
+    //     console.log("Trip:", this)
+    //     request.send(JSON.stringify(this));
   },
   getNumberOfActivities: function() {
     this.numberOfActivities = this.activities.length;
-    // app.post('/trips', function(req,res) {
-    //   console.log('body', req.body);
-    //   MongoClient.connect(url, function(err, db) {
-    //     var collection = db.collection('trips');
-    //     collection.update(
-    //       db.trips.update({name: tripName},
-    //         {$set: {activities: []}})
-    //       );
-    //     res.status(200).end();
-    //     db.close();
-    //   });
-    // });
   },
   getNumberOfActivitiesCompleted: function() {
     var total = 0;
