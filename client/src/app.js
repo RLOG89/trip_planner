@@ -125,6 +125,8 @@ var app = function() {
       newMap.addMarker(itemCoords, item.img, item.description);
     })
   };
+  var itineraryMapDiv = document.getElementById('itinerary-map');
+  var itineraryMap = MapWrapper(itineraryMapDiv, startCoords, 6);
 };
 
 window.onload = app;
