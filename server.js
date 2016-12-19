@@ -32,15 +32,22 @@ app.post('/trips', function(req,res) {
   MongoClient.connect(url, function(err, db) {
     var collection = db.collection('trips');
     collection.insertOne(
-      { "name": req.body.name,
+      { "user_name": req.body.user_name,
+        "password": req.body.password,
+        "name": req.body.name,
         "owner": req.body.owner,
         "budget": req.body.budget,
+        "cost": 0,
         "start_date": req.body.start_date,
         "end_date": req.body.end_date,
-        "start_end_point": req.body.start_end_point,
         "duration": 0,
         "activities": [],
-        "number_of_activities": 0
+        "number_of_activities": 0,
+        "start_end_point": req.body.start_end_point,
+        "completed": false,
+        "in_budget": true,
+        "distance_km": 0,
+        "distance_miles": 0
       }, function(err, newTrip){
         res.status(200).send(newTrip.insertedId);
         db.close();
