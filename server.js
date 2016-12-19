@@ -68,8 +68,12 @@ app.put('/trips/:id', function(req,res) {
     var collection = db.collection('trips');
     collection.update(
       {"_id": new ObjectId(req.params.id)}, 
-      {$set: {"activities": req.body.activities}}
-      );
+      {$set: 
+        {
+          "activities": req.body.activities,
+          "number_of_activities": req.body.numberOfActivities
+        }
+      });
     res.status(200).end();
     db.close();
   });

@@ -28,6 +28,7 @@ Trip.prototype = {
     console.log('I was called', id, activity);
     var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
     this.activities.push(activity);
+    this.numberOfActivities ++;
     var request = new XMLHttpRequest();
     request.open("PUT", url);
     request.setRequestHeader("Content-Type", "application/json");
