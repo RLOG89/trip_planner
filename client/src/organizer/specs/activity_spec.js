@@ -25,6 +25,15 @@ describe('activity', function() {
     activity.setCompleted();
     assert.equal(activity.completed, true);
   });
-
+  it('should start with notes empty', function() {
+    var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    assert.equal(activity.notes, '');
+  });
+  it('should be able to add note', function() {
+    var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    note = "really good activity";
+    activity.addNote(note);
+    assert.equal(activity.notes, 'really good activity');
+  });
 
 });
