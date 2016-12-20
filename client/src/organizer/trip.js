@@ -25,7 +25,7 @@ Trip.prototype = {
     this.duration = Math.round((date2-date1)/(1000*60*60*24))
   },
   addActivity: function(id, activity) {
-    console.log('I was called', id, activity);
+    // console.log('I was called', id, activity);
     var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
     this.activities.push(activity);
     this.numberOfActivities ++;
@@ -36,7 +36,7 @@ Trip.prototype = {
       if(request.status === 200) {
       }
     };
-    console.log("Trip:", this)
+    // console.log("Trip:", this)
     request.send(JSON.stringify(this));
   },
   removeActivity: function(activity) {
