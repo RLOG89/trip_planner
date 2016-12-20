@@ -8,7 +8,7 @@ var Trip = require('./organizer/trip.js');
 var ajaxHelper = require('./helper/ajaxHelper.js');
 var url = "http://localhost:3000/trips";
 var _id = "";
-var thisid = "";
+// var thisid = "";
 
 var app = function() {
 
@@ -51,12 +51,14 @@ var app = function() {
         end_date: document.querySelector('#end-date').value,
         start_end_point: document.querySelector('#start-end-point').value
       };
+      console.log(tripData)
       newTrip = new Trip(tripData);
       organizer.addTrip(newTrip);
 
       ajaxHelper.makePostRequest(url, tripData, function(id){
+        console.log("i am being called")
         _id = id;
-        thisid = "http://localhost:3000/trips/" + id.replace(/"/g, '')
+        // thisid = "http://localhost:3000/trips/" + id.replace(/"/g, '') 
         // ajaxHelper.makeGetRequest("http://localhost:3000/trips/" + id.replace(/"/g, '') + "/edit", tripData, cb);
       })
 
