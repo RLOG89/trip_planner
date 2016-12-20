@@ -53,7 +53,6 @@ app.post('/trips', function(req,res) {
         db.close();
       }
     );
-
   });
 });
 
