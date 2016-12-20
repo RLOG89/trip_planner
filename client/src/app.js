@@ -12,7 +12,27 @@ var thisid = "";
 
 var app = function() {
 
-  var organizer = new Organizer();
+    var login = document.querySelector('#login');
+    login.onsubmit = function(e) {
+
+      var username = document.getElementById("login-user-name").value
+      var password = document.getElementById("login-password").value
+      e.preventDefault();
+
+      ajaxHelper.makeGetRequest("http://localhost:3000/trips?user_name=" + username, function(data) {
+        var userExists = JSON.parse(data)
+        console.log(userExists)
+        if(userExists.length >= 1) {
+          containerIndex.style.visibility = 'hidden';
+          containerDestination.style.visibility = 'hidden';
+          containerItinerary.style.visibility = 'visible';
+        } else {
+          alert('You have not registered.  Please sign up above.')
+        }
+    })
+    }
+
+    var organizer = new Organizer();
 
   var tripForm = document.querySelector('#trip-form');
   tripForm.onsubmit = function(e) {
@@ -49,14 +69,11 @@ var app = function() {
     var destinationButton = document.getElementById('destination-button')
     var itineraryButton = document.getElementById('itinerary-button')
     indexButton.onclick = function() {
-      console.log('working')
       containerIndex.style.visibility = 'visible';
       containerDestination.style.visibility = 'hidden';
       containerItinerary.style.visibility = 'hidden';
     }
     destinationButton.oncall = function() {
-      console.log('working')
-
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'visible';
       containerItinerary.style.visibility = 'hidden';
@@ -71,60 +88,64 @@ var app = function() {
 
     var whiskyButton = document.getElementById('distilleries');
     var whiskyActive = false;
+    var iconDistillery = "images/distillery.png";
     whiskyButton.onclick = function() {
       if (whiskyActive) {
         whiskyActive = false;
         newMap.deleteMarkers();
-        populateList(whisky,true);
+        populateList(whisky,true,iconDistillery);
       } else {
         whiskyActive = true;
-        populateList(whisky);
+        populateList(whisky,false,iconDistillery);
       }
     };
 
     var sportsButton = document.getElementById('sports');
     var sportsActive = false;
+    var iconSport = "images/sport.png";
     sportsButton.onclick = function() {
       if (sportsActive) {
         sportsActive = false;
         newMap.deleteMarkers();
-        populateList(sports,true);
+        populateList(sports,true,iconSport);
       } else {
         sportsActive = true;
-        populateList(sports);
+        populateList(sports,false,iconSport);
       }
     };
 
     var moviesButton = document.getElementById('movies');
     var moviesActive = false;
+    var iconMovie = "images/movie.png";
     moviesButton.onclick = function() {
       if (moviesActive) {
         newMap.deleteMarkers();
         moviesActive = false;
-        populateList(movies,true);
+        populateList(movies,true,iconMovie);
       } else {
         moviesActive = true;
-        populateList(movies);
+        populateList(movies,false,iconMovie);
       }
     };
 
     var historicButton = document.getElementById('historic');
     var historicActive = false;
+    var iconCastle = "images/castle.png";
     historicButton.onclick = function() {
       if (historicActive) {
         historicActive = false;
         newMap.deleteMarkers();
-        populateList(historic,true);
+        populateList(historic,true,iconCastle);
       } else {
         historicActive = true;
-        populateList(historic);
+        populateList(historic,false,iconCastle);
       }
     };
 
     var mapDiv = document.getElementById('main-map');
     var startCoords = ({lat: 56.4907, lng: -4.2026});
     var newMap = new MapWrapper(mapDiv, startCoords, 6);
-    var populateList = function(categories, clear) {
+    var populateList = function(categories, clear,iconImage) {
       var list = document.getElementById('list');
       list.innerHTML = "";
 
@@ -161,7 +182,7 @@ var app = function() {
         list.appendChild(spacer);
         itemCoords = {lat: item.lat, lng: item.lng};
         console.log(newMap);
-        newMap.addMarker(itemCoords, item.img, item.description);
+        newMap.addMarker(itemCoords, item.img, item.description, iconImage);
       })
     };
     var itineraryMapDiv = document.getElementById('itinerary-map');

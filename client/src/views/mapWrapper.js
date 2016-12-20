@@ -8,12 +8,15 @@ var MapWrapper = function(container, coords, zoom) {
 };
 
 MapWrapper.prototype = {
-  addMarker: function(coords, image, description) {
+  addMarker: function(coords, image, description, icopng) {
     var marker = new google.maps.Marker({
+      
       position: coords,
       map: this.map,
-      animation: google.maps.Animation.DROP
+      animation: google.maps.Animation.DROP,
+      icon: icopng
     });
+
     var infowindow = new google.maps.InfoWindow({
       content: '<IMG BORDER="0" ALIGN="Left" SRC="' + image + '">' + description
     });
