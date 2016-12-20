@@ -8,8 +8,9 @@ var Trip = require('./organizer/trip.js');
 var ajaxHelper = require('./helper/ajaxHelper.js');
 var url = "http://localhost:3000/trips";
 var _id = "";
+var thisid = "";
 
-  var app = function() {
+var app = function() {
 
     var login = document.querySelector('#login');
     login.onsubmit = function(e) {
@@ -31,11 +32,43 @@ var _id = "";
     })
     }
 
+// sets the date to today on the calendars
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+     if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("start-date").setAttribute("max", today);
+    document.getElementById("end-date").setAttribute("max", today);
+
+// slide show of pictures on front page
+var slideIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("slide");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "block"; 
+    setTimeout(carousel, 5000); // Change image every 2 seconds
+}
+
     var organizer = new Organizer();
 
-    var tripForm = document.querySelector('#trip-form');
-    tripForm.onsubmit = function(e) {
-      e.preventDefault();
+  var tripForm = document.querySelector('#trip-form');
+  tripForm.onsubmit = function(e) {
+    e.preventDefault();
       // FIX LATER, NEED TO CALL A FUNCTION
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'visible';
@@ -54,10 +87,11 @@ var _id = "";
       organizer.addTrip(newTrip);
 
       ajaxHelper.makePostRequest(url, tripData, function(id){
-        console.log("data:", id);
         _id = id;
+        thisid = "http://localhost:3000/trips/" + id.replace(/"/g, '')
         // ajaxHelper.makeGetRequest("http://localhost:3000/trips/" + id.replace(/"/g, '') + "/edit", tripData, cb);
       })
+
     };
 
     var containerIndex = document.getElementById('container-index');
@@ -77,6 +111,8 @@ var _id = "";
       containerItinerary.style.visibility = 'hidden';
     }
     itineraryButton.onclick = function() {
+      console.log('working')
+      populateItinerary();
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'hidden';
       containerItinerary.style.visibility = 'visible';
@@ -149,6 +185,7 @@ var _id = "";
 
       newMap.deleteMarkers();
 
+
       categories.forEach(function(item) {
         var spacer = document.createElement('p');
         var destination = document.createElement('li');
@@ -168,7 +205,7 @@ var _id = "";
           description.appendChild(image);
         });
         addButton.addEventListener ("click", function() {
-          newTrip.addActivity(_id, item.name)
+          newTrip.addActivity(_id, item)
         })
         destination.innerText = item.name +', ' + item.location;
         list.appendChild(destination);
@@ -183,24 +220,36 @@ var _id = "";
     var itineraryMapDiv = document.getElementById('itinerary-map');
     var itineraryMap = MapWrapper(itineraryMapDiv, startCoords, 6);
 
-  var exampleItinerary = [{lat: 55.947149, lng: -3.170776, name: 'Edinburgh Town'}, {lat: 55.873876, lng: -4.252041, name: 'Glasgow Town'}];
+    var exampleItinerary = [{lat: 55.947149, lng: -3.170776, name: 'Edinburgh Town'}, {lat: 55.873876, lng: -4.252041, name: 'Glasgow Town'}];
 
-  var itineraryMapDiv = document.getElementById('itinerary-map');
-  var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
+    var itineraryMapDiv = document.getElementById('itinerary-map');
+    var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
 
-  var populateItineraryMap = function(map, itinerary) {
-    for (destination of itinerary) {
-      destinationCoords = {lat: destination.lat, lng: destination.lng};
-      map.addItineraryMarker(destinationCoords, destination.name);
+    var populateItineraryMap = function(map, itinerary) {
+      for (destination of itinerary) {
+        destinationCoords = {lat: destination.lat, lng: destination.lng};
+        map.addItineraryMarker(destinationCoords, destination.name);
+      }
+    };
+
+    populateItineraryMap(itineraryMap, exampleItinerary);
+
+    var directionsService = new google.maps.DirectionsService();
+
+    var tripWaypoints = [{location: 'Balvenie, Dufftown', stopover: true}, {location: 'Highland Park, Kirkwall', stopover: true}];
+    console.log(_id)
+
+    var populateItinerary = function() {
+
+      var url = "http://localhost:3000/trips/" + _id.replace(/"/g, '');
+
+      ajaxHelper.makeGetRequest(url, function(text) { 
+        var trip = JSON.parse(text);
+        console.log(trip._id)
+      })    
     }
-  };
 
-  populateItineraryMap(itineraryMap, exampleItinerary);
-
-  var directionsService = new google.maps.DirectionsService();
-
-  var tripWaypoints = [{location: 'Balvenie, Dufftown', stopover: true}, {location: 'Highland Park, Kirkwall', stopover: true}];
-  
+  console.log(url)
 
   var request = {
     origin: 'Emirates Arena, Glasgow',
@@ -234,4 +283,4 @@ var _id = "";
   });
 }
 
-  window.onload = app;
+window.onload = app;

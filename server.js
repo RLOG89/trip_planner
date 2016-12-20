@@ -56,12 +56,21 @@ app.post('/trips', function(req,res) {
         db.close();
       }
     );
-
   });
 });
 
 app.get('/trips/:id/edit', function(req,res) {
-  // res.sendFile({id:req.params.id});
+  MongoClient.connect(url, function(err, db) {
+    var collection = db.collection('trips');
+    collection.findOne({_id: ObjectId(req.params.id)}, function(err, document) {
+      console.log(document.name);
+      res.status(200).send(document);
+      db.close();
+    });
+  })
+})
+
+app.get('/trips/:id', function(req,res) {
   MongoClient.connect(url, function(err, db) {
     var collection = db.collection('trips');
     collection.findOne({_id: ObjectId(req.params.id)}, function(err, document) {

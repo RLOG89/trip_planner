@@ -1,3 +1,5 @@
+var ajaxHelper = require('../helper/ajaxHelper.js');
+
 var Trip = function(params) {
   this.name = params.name;              // the name of the trip e.g Distillery tour 2016
   this.owner = params.owner;            // the full name of the trips owner
@@ -8,7 +10,7 @@ var Trip = function(params) {
   this.duration = 0;                    // the duration of the trip 
   this.activities = [];                 // array to hold all the activities as activity objects
   this.numberOfActivities = 0;          // number of activities in the array
-  this.startEndLocation = "";           // the start/end point of the trip as a String
+  this.startEndPoint = params.start_end_point;           // the start/end point of the trip as a String
   this.completed = false;               // trip completed status if all activities are complete
   this.inBudget = true;                 // trip in buget status
   this.distanceKm = 0;
@@ -16,8 +18,15 @@ var Trip = function(params) {
 };
 
 Trip.prototype = {
-  // fetchTrip: function() {
-
+  // showTrip: function(id) {
+  //   var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
+  //   ajaxHelper.makeGetRequest(url, function(text) { 
+  //     var trip = JSON.parse(text);
+  //     console.log(trip)
+  //     for(items of trip) {
+  //       console.log(items)
+  //     }
+  //   })    
   // }
   getDuration: function() {
     date1 = new Date(this.start_date);  
@@ -40,55 +49,57 @@ Trip.prototype = {
     request.send(JSON.stringify(this));
   },
   removeActivity: function(activity) {
-    // console.log('I was called', id, activity);
-    //     var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
-    //     this.activities.pop(activity);
-    //     var request = new XMLHttpRequest();
-    //     request.open("PUT", url);
-    //     request.setRequestHeader("Content-Type", "application/json");
-    //     request.onload = function() {
-    //       if(request.status === 200) {
-    //       }
-    //     };
-    //     console.log("Trip:", this)
-    //     request.send(JSON.stringify(this));
+    // var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
+    // var index = this.activities.indexOf(activity)
+    // for (var activity of this.activities) {
+    //   this.activities.splice(index, 1);
+    // }
+    // var request = new XMLHttpRequest();
+    // request.open("PUT", url);
+    // request.setRequestHeader("Content-Type", "application/json");
+    // request.onload = function() {
+    //   if(request.status === 200) {
+    //   }
+    // };
+    // console.log("Trip:", this)
+    // request.send(JSON.stringify(this));
   },
   getNumberOfActivities: function() {
     this.numberOfActivities = this.activities.length;
   },
   getNumberOfActivitiesCompleted: function() {
     var total = 0;
-      for (var activity of this.activities)
-      {
-        if (activity.completed){ 
-          total ++;
-        }      
-      }
-      return total;
+    for (var activity of this.activities)
+    {
+      if (activity.completed){ 
+        total ++;
+      }      
+    }
+    return total;
   },
   totalTripCost: function() {
-      var total = 0;
-      for (var activity of this.activities)
-      {
-         total += activity.cost;
-      }
-      this.cost = total;
-      if (this.cost > this.budget) {
-        this.inBudget = false;
-      }
-      else{
-        this.inBudget = true;
-      }
-      return total;
-  },
-  checkCompleted: function() {
-    this.getNumberOfActivities();
-      if (this.numberOfActivities = this.getNumberOfActivitiesCompleted()){
-        this.completed = true;
-      };
-  },
-  getMiles: function() {
-    this.distanceMiles = this.distanceKm * 1.6;
-  },
+    var total = 0;
+    for (var activity of this.activities)
+    {
+     total += activity.cost;
+   }
+   this.cost = total;
+   if (this.cost > this.budget) {
+    this.inBudget = false;
+  }
+  else{
+    this.inBudget = true;
+  }
+  return total;
+},
+checkCompleted: function() {
+  this.getNumberOfActivities();
+  if (this.numberOfActivities = this.getNumberOfActivitiesCompleted()){
+    this.completed = true;
+  };
+},
+getMiles: function() {
+  this.distanceMiles = this.distanceKm * 1.6;
+},
 }
 module.exports = Trip;
