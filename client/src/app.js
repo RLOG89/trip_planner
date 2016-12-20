@@ -32,22 +32,6 @@ var app = function() {
     })
     }
 
-// sets the date to today on the calendars
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-     if(dd<10){
-            dd='0'+dd
-        } 
-        if(mm<10){
-            mm='0'+mm
-        } 
-
-    today = yyyy+'-'+mm+'-'+dd;
-    document.getElementById("start-date").setAttribute("max", today);
-    document.getElementById("end-date").setAttribute("max", today);
-
 // slide show of pictures on front page
 var slideIndex = 0;
 carousel();
