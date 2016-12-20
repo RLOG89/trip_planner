@@ -71,60 +71,64 @@ var _id = "";
 
     var whiskyButton = document.getElementById('distilleries');
     var whiskyActive = false;
+    var iconDistillery = "images/distillery.png";
     whiskyButton.onclick = function() {
       if (whiskyActive) {
         whiskyActive = false;
         newMap.deleteMarkers();
-        populateList(whisky,true);
+        populateList(whisky,true,iconDistillery);
       } else {
         whiskyActive = true;
-        populateList(whisky);
+        populateList(whisky,false,iconDistillery);
       }
     };
 
     var sportsButton = document.getElementById('sports');
     var sportsActive = false;
+    var iconSport = "images/sport.png";
     sportsButton.onclick = function() {
       if (sportsActive) {
         sportsActive = false;
         newMap.deleteMarkers();
-        populateList(sports,true);
+        populateList(sports,true,iconSport);
       } else {
         sportsActive = true;
-        populateList(sports);
+        populateList(sports,false,iconSport);
       }
     };
 
     var moviesButton = document.getElementById('movies');
     var moviesActive = false;
+    var iconMovie = "images/movie.png";
     moviesButton.onclick = function() {
       if (moviesActive) {
         newMap.deleteMarkers();
         moviesActive = false;
-        populateList(movies,true);
+        populateList(movies,true,iconMovie);
       } else {
         moviesActive = true;
-        populateList(movies);
+        populateList(movies,false,iconMovie);
       }
     };
 
     var historicButton = document.getElementById('historic');
     var historicActive = false;
+    var iconCastle = "images/castle.png";
     historicButton.onclick = function() {
       if (historicActive) {
         historicActive = false;
         newMap.deleteMarkers();
-        populateList(historic,true);
+        populateList(historic,true,iconCastle);
       } else {
         historicActive = true;
-        populateList(historic);
+        populateList(historic,false,iconCastle);
       }
     };
 
     var mapDiv = document.getElementById('main-map');
     var startCoords = ({lat: 56.4907, lng: -4.2026});
     var newMap = new MapWrapper(mapDiv, startCoords, 6);
-    var populateList = function(categories, clear) {
+    var populateList = function(categories, clear,iconImage) {
       var list = document.getElementById('list');
       list.innerHTML = "";
 
@@ -160,7 +164,7 @@ var _id = "";
         list.appendChild(spacer);
         itemCoords = {lat: item.lat, lng: item.lng};
         console.log(newMap);
-        newMap.addMarker(itemCoords, item.img, item.description);
+        newMap.addMarker(itemCoords, item.img, item.description, iconImage);
       })
     };
     var itineraryMapDiv = document.getElementById('itinerary-map');

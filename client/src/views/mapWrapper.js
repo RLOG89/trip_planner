@@ -8,13 +8,13 @@ var MapWrapper = function(container, coords, zoom) {
 };
 
 MapWrapper.prototype = {
-  addMarker: function(coords, image, description) {
+  addMarker: function(coords, image, description, icopng) {
     var marker = new google.maps.Marker({
       
       position: coords,
       map: this.map,
       animation: google.maps.Animation.DROP,
-      // icon: "images/sport.png"
+      icon: icopng
     });
 
     var infowindow = new google.maps.InfoWindow({
