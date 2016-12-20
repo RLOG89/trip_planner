@@ -35,5 +35,9 @@ describe('activity', function() {
     activity.addNote(note);
     assert.equal(activity.notes, 'really good activity');
   });
+  it('should convert to string', function() {
+    var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
+    assert.equal("half a day", activity.toStringHours())
+  })
 
 });
