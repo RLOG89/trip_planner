@@ -266,6 +266,15 @@ ul {
   background-color: #856367;
 }
 
+#itinerary::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0em;
+}
+
+#itinerary::-webkit-scrollbar-thumb {
+  background-color: #856367;
+}
+
 
 
 button {
