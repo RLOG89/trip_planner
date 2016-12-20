@@ -8,6 +8,7 @@ var Trip = require('./organizer/trip.js');
 var ajaxHelper = require('./helper/ajaxHelper.js');
 var url = "http://localhost:3000/trips";
 var _id = "";
+var thisid = "";
 
   var app = function() {
 
@@ -34,8 +35,10 @@ var _id = "";
       organizer.addTrip(newTrip);
 
       ajaxHelper.makePostRequest(url, tripData, function(id){
-        console.log("data:", id);
+        // console.log("data:", id);
         _id = id;
+        thisid = "http://localhost:3000/trips/" + id.replace(/"/g, '')
+        console.log(thisid)
         // ajaxHelper.makeGetRequest("http://localhost:3000/trips/" + id.replace(/"/g, '') + "/edit", tripData, cb);
       })
      
@@ -183,25 +186,23 @@ var _id = "";
 
   var tripWaypoints = [{location: 'Balvenie, Dufftown', stopover: true}, {location: 'Highland Park, Kirkwall', stopover: true}];
 
-  var url = "http://localhost:3000/trips/" + _id.replace(/"/g, '');
+  var url = "http://localhost:3000/trips/" + thisid;
+  console.log(thisid)
+  // console.log(ajaxHelper)
 
   // var url = "http://localhost:3000/trips/58582102bae57fb4460ec8ac";
 
 
-  ajaxHelper.makeGetRequest(url, function() {
-  if(request.status === 200) {
-    console.log('got the data');
-    console.log(request.responseText);
-    var trip = JSON.parse(request.responseText);
+  ajaxHelper.makeGetRequest(url, function(text) { 
+    var trip = JSON.parse(text);
     console.log(trip)
     for(items of trip) {
       console.log(items)
     }
-  }
   })    
 
 
-  console.log(url)
+  // console.log(url)
 
   var request = {
     origin: 'Emirates Arena, Glasgow',
