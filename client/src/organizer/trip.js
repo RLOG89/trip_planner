@@ -52,9 +52,10 @@ Trip.prototype = {
     console.log("removeActivity called")
     var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
     var index = this.activities.indexOf(activity)
-    for (var activity of this.activities) {
-      this.activities.splice(index, 1);
-    }
+    this.activities.splice(index, 1);
+    // for (var activity of this.activities) {
+    //   this.activities.splice(index, 1);
+    // }
     var request = new XMLHttpRequest();
     request.open("PUT", url);
     request.setRequestHeader("Content-Type", "application/json");
