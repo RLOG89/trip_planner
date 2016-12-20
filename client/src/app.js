@@ -37,16 +37,15 @@ var slideIndex = 0;
 carousel();
 
 function carousel() {
-  var i;
-  var x = document.getElementsByClassName("slide");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none"; 
-  }
-  slideIndex++;
-  if (slideIndex > x.length) {slideIndex = 1} 
-    x[slideIndex-1].style.display = "block"; 
-    setTimeout(carousel, 5000); // Change image every 2 seconds
-  }
+    var slide = document.getElementsByClassName("slide");
+    for (var i = 0; i < slide.length; i++) {
+      slide[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > slide.length) {slideIndex = 1} 
+    slide[slideIndex-1].style.display = "block"; 
+    setTimeout(carousel, 5000); 
+}
 
   var organizer = new Organizer();
 
@@ -91,7 +90,7 @@ function carousel() {
       containerDestination.style.visibility = 'hidden';
       containerItinerary.style.visibility = 'hidden';
     }
-    destinationButton.oncall = function() {
+    destinationButton.onclick = function() {
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'visible';
       containerItinerary.style.visibility = 'hidden';
@@ -190,6 +189,8 @@ function carousel() {
           image.height = '100px';
           image.width = '100px';
           description.appendChild(image);
+          newMap.clearMarkers();
+          newMap.addMarker({lat: item.lat, lng: item.lng}, item.name, item.cost, item.duration, iconImage);
         });
         addButton.addEventListener ("click", function() {
           if (this.innerHTML === "add to trip") {
@@ -207,7 +208,7 @@ function carousel() {
         list.appendChild(spacer);
         itemCoords = {lat: item.lat, lng: item.lng};
         // console.log(newMap);
-        newMap.addMarker(itemCoords, item.img, item.description, iconImage);
+        newMap.addMarker(itemCoords, item.name, item.cost, item.duration, iconImage);
       })
     };
 
