@@ -254,7 +254,7 @@ function carousel() {
      travelMode: "DRIVING"
    };
 
-   var directionsDisplay = new google.maps.DirectionsRenderer();
+   var directionsDisplay = new google.maps.DirectionsRenderer({ polylineOptions:{strokeColor:"#856367",strokeWeight:5}, suppressMarkers:true });
    directionsDisplay.setMap(itineraryMap.map);
    directionsService.route(request, function(response, status) {
      if (status == 'OK') {
