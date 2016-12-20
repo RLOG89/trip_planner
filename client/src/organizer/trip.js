@@ -1,3 +1,5 @@
+var ajaxHelper = require('../helper/ajaxHelper.js');
+
 var Trip = function(params) {
   this.name = params.name;              // the name of the trip e.g Distillery tour 2016
   this.owner = params.owner;            // the full name of the trips owner
@@ -16,6 +18,16 @@ var Trip = function(params) {
 };
 
 Trip.prototype = {
+  // showTrip: function(id) {
+  //   var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
+  //   ajaxHelper.makeGetRequest(url, function(text) { 
+  //     var trip = JSON.parse(text);
+  //     console.log(trip)
+  //     for(items of trip) {
+  //       console.log(items)
+  //     }
+  //   })    
+  // }
   getDuration: function() {
     date1 = new Date(this.start_date);  
     date2 = new Date(this.end_date); 

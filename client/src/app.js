@@ -10,13 +10,13 @@ var url = "http://localhost:3000/trips";
 var _id = "";
 var thisid = "";
 
-  var app = function() {
+var app = function() {
 
-    var organizer = new Organizer();
+  var organizer = new Organizer();
 
-    var tripForm = document.querySelector('#trip-form');
-    tripForm.onsubmit = function(e) {
-      e.preventDefault();
+  var tripForm = document.querySelector('#trip-form');
+  tripForm.onsubmit = function(e) {
+    e.preventDefault();
       // FIX LATER, NEED TO CALL A FUNCTION
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'visible';
@@ -35,13 +35,11 @@ var thisid = "";
       organizer.addTrip(newTrip);
 
       ajaxHelper.makePostRequest(url, tripData, function(id){
-        // console.log("data:", id);
         _id = id;
         thisid = "http://localhost:3000/trips/" + id.replace(/"/g, '')
-        console.log(thisid)
         // ajaxHelper.makeGetRequest("http://localhost:3000/trips/" + id.replace(/"/g, '') + "/edit", tripData, cb);
       })
-     
+
     };
 
     var containerIndex = document.getElementById('container-index');
@@ -65,7 +63,7 @@ var thisid = "";
     }
     itineraryButton.onclick = function() {
       console.log('working')
-
+      populateItinerary();
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'hidden';
       containerItinerary.style.visibility = 'visible';
@@ -134,6 +132,7 @@ var thisid = "";
 
       newMap.deleteMarkers();
 
+
       categories.forEach(function(item) {
         var spacer = document.createElement('p');
         var destination = document.createElement('li');
@@ -168,41 +167,36 @@ var thisid = "";
     var itineraryMapDiv = document.getElementById('itinerary-map');
     var itineraryMap = MapWrapper(itineraryMapDiv, startCoords, 6);
 
-  var exampleItinerary = [{lat: 55.947149, lng: -3.170776, name: 'Edinburgh Town'}, {lat: 55.873876, lng: -4.252041, name: 'Glasgow Town'}];
+    var exampleItinerary = [{lat: 55.947149, lng: -3.170776, name: 'Edinburgh Town'}, {lat: 55.873876, lng: -4.252041, name: 'Glasgow Town'}];
 
-  var itineraryMapDiv = document.getElementById('itinerary-map');
-  var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
+    var itineraryMapDiv = document.getElementById('itinerary-map');
+    var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
 
-  var populateItineraryMap = function(map, itinerary) {
-    for (destination of itinerary) {
-      destinationCoords = {lat: destination.lat, lng: destination.lng};
-      map.addItineraryMarker(destinationCoords, destination.name);
+    var populateItineraryMap = function(map, itinerary) {
+      for (destination of itinerary) {
+        destinationCoords = {lat: destination.lat, lng: destination.lng};
+        map.addItineraryMarker(destinationCoords, destination.name);
+      }
+    };
+
+    populateItineraryMap(itineraryMap, exampleItinerary);
+
+    var directionsService = new google.maps.DirectionsService();
+
+    var tripWaypoints = [{location: 'Balvenie, Dufftown', stopover: true}, {location: 'Highland Park, Kirkwall', stopover: true}];
+    console.log(_id)
+
+    var populateItinerary = function() {
+
+      var url = "http://localhost:3000/trips/" + _id.replace(/"/g, '');
+
+      ajaxHelper.makeGetRequest(url, function(text) { 
+        var trip = JSON.parse(text);
+        console.log(trip._id)
+      })    
     }
-  };
 
-  populateItineraryMap(itineraryMap, exampleItinerary);
-
-  var directionsService = new google.maps.DirectionsService();
-
-  var tripWaypoints = [{location: 'Balvenie, Dufftown', stopover: true}, {location: 'Highland Park, Kirkwall', stopover: true}];
-
-  var url = "http://localhost:3000/trips/" + thisid;
-  console.log(thisid)
-  // console.log(ajaxHelper)
-
-  // var url = "http://localhost:3000/trips/58582102bae57fb4460ec8ac";
-
-
-  ajaxHelper.makeGetRequest(url, function(text) { 
-    var trip = JSON.parse(text);
-    console.log(trip)
-    for(items of trip) {
-      console.log(items)
-    }
-  })    
-
-
-  // console.log(url)
+  console.log(url)
 
   var request = {
     origin: 'Emirates Arena, Glasgow',
@@ -236,4 +230,4 @@ var thisid = "";
   });
 }
 
-  window.onload = app;
+window.onload = app;
