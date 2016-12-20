@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
-  
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -23,6 +23,7 @@ app.get('/trips', function(req,res) {
     collection.find({
       "user_name" : req.query.user_name
     }).toArray(function(err, docs) {
+    collection.find({}).toArray(function(err, docs) {
       res.json(docs);
       db.close();
     });
@@ -37,25 +38,26 @@ app.post('/trips', function(req,res) {
 
     collection.insertOne(
       { "user_name": req.body.user_name,
-        "password": req.body.password,
-        "name": req.body.name,
-        "owner": req.body.owner,
-        "budget": req.body.budget,
-        "cost": 0,
-        "start_date": req.body.start_date,
-        "end_date": req.body.end_date,
-        "duration": 0,
-        "activities": [],
-        "number_of_activities": 0,
-        "start_end_point": req.body.start_end_point,
-        "completed": false,
-        "in_budget": true,
-        "distance_km": 0,
-        "distance_miles": 0
-      }, function(err, newTrip){
-        res.status(200).send(newTrip.insertedId);
-        db.close();
-      }
+      "password": req.body.password,
+      "name": req.body.name,
+      "owner": req.body.owner,
+      "budget": req.body.budget,
+      "cost": 0,
+      "start_date": req.body.start_date,
+      "end_date": req.body.end_date,
+      "duration": 0,
+      "activities": [],
+      "number_of_activities": 0,
+      "start_end_point": req.body.start_end_point,
+      "completed": false,
+      "in_budget": true,
+      "distance_km": 0,
+      "distance_miles": 0
+    }, function(err, newTrip){
+      res.status(200).send(newTrip.insertedId);
+      console.log(newTrip);
+      db.close();
+    }
     );
   });
 });
