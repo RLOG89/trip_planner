@@ -8,8 +8,9 @@ var Trip = require('./organizer/trip.js');
 var ajaxHelper = require('./helper/ajaxHelper.js');
 var url = "http://localhost:3000/trips";
 var _id = "";
+var thisid = "";
 
-  var app = function() {
+var app = function() {
 
     var login = document.querySelector('#login');
     login.onsubmit = function(e) {
@@ -65,9 +66,9 @@ function carousel() {
 
     var organizer = new Organizer();
 
-    var tripForm = document.querySelector('#trip-form');
-    tripForm.onsubmit = function(e) {
-      e.preventDefault();
+  var tripForm = document.querySelector('#trip-form');
+  tripForm.onsubmit = function(e) {
+    e.preventDefault();
       // FIX LATER, NEED TO CALL A FUNCTION
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'visible';
@@ -86,10 +87,11 @@ function carousel() {
       organizer.addTrip(newTrip);
 
       ajaxHelper.makePostRequest(url, tripData, function(id){
-        console.log("data:", id);
         _id = id;
+        thisid = "http://localhost:3000/trips/" + id.replace(/"/g, '')
         // ajaxHelper.makeGetRequest("http://localhost:3000/trips/" + id.replace(/"/g, '') + "/edit", tripData, cb);
       })
+
     };
 
     var containerIndex = document.getElementById('container-index');
@@ -109,6 +111,8 @@ function carousel() {
       containerItinerary.style.visibility = 'hidden';
     }
     itineraryButton.onclick = function() {
+      console.log('working')
+      populateItinerary();
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'hidden';
       containerItinerary.style.visibility = 'visible';
@@ -181,6 +185,7 @@ function carousel() {
 
       newMap.deleteMarkers();
 
+
       categories.forEach(function(item) {
         var spacer = document.createElement('p');
         var destination = document.createElement('li');
@@ -200,7 +205,7 @@ function carousel() {
           description.appendChild(image);
         });
         addButton.addEventListener ("click", function() {
-          newTrip.addActivity(_id, item.name)
+          newTrip.addActivity(_id, item)
         })
         destination.innerText = item.name +', ' + item.location;
         list.appendChild(destination);
@@ -215,24 +220,36 @@ function carousel() {
     var itineraryMapDiv = document.getElementById('itinerary-map');
     var itineraryMap = MapWrapper(itineraryMapDiv, startCoords, 6);
 
-  var exampleItinerary = [{lat: 55.947149, lng: -3.170776, name: 'Edinburgh Town'}, {lat: 55.873876, lng: -4.252041, name: 'Glasgow Town'}];
+    var exampleItinerary = [{lat: 55.947149, lng: -3.170776, name: 'Edinburgh Town'}, {lat: 55.873876, lng: -4.252041, name: 'Glasgow Town'}];
 
-  var itineraryMapDiv = document.getElementById('itinerary-map');
-  var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
+    var itineraryMapDiv = document.getElementById('itinerary-map');
+    var itineraryMap = new MapWrapper(itineraryMapDiv, startCoords, 6);
 
-  var populateItineraryMap = function(map, itinerary) {
-    for (destination of itinerary) {
-      destinationCoords = {lat: destination.lat, lng: destination.lng};
-      map.addItineraryMarker(destinationCoords, destination.name);
+    var populateItineraryMap = function(map, itinerary) {
+      for (destination of itinerary) {
+        destinationCoords = {lat: destination.lat, lng: destination.lng};
+        map.addItineraryMarker(destinationCoords, destination.name);
+      }
+    };
+
+    populateItineraryMap(itineraryMap, exampleItinerary);
+
+    var directionsService = new google.maps.DirectionsService();
+
+    var tripWaypoints = [{location: 'Balvenie, Dufftown', stopover: true}, {location: 'Highland Park, Kirkwall', stopover: true}];
+    console.log(_id)
+
+    var populateItinerary = function() {
+
+      var url = "http://localhost:3000/trips/" + _id.replace(/"/g, '');
+
+      ajaxHelper.makeGetRequest(url, function(text) { 
+        var trip = JSON.parse(text);
+        console.log(trip._id)
+      })    
     }
-  };
 
-  populateItineraryMap(itineraryMap, exampleItinerary);
-
-  var directionsService = new google.maps.DirectionsService();
-
-  var tripWaypoints = [{location: 'Balvenie, Dufftown', stopover: true}, {location: 'Highland Park, Kirkwall', stopover: true}];
-  
+  console.log(url)
 
   var request = {
     origin: 'Emirates Arena, Glasgow',
@@ -266,4 +283,4 @@ function carousel() {
   });
 }
 
-  window.onload = app;
+window.onload = app;
