@@ -42,14 +42,14 @@ describe('trip', function() {
   it('should be able to add activity', function() {
     var trip = new Trip({name:'Distillery Tour 2016'});
     var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
-    trip.addActivity(activity);
+    trip.addActivity("",activity);
     assert.deepEqual(activity, trip.activities[0]);
   });
 
   it('should be able to remove activity', function() {
     var trip = new Trip({name:'Distillery Tour 2016'});
     var activity = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
-    trip.addActivity(activity);
+    trip.addActivity("",activity);
     assert.deepEqual(activity, trip.activities[0]);
     trip.removeActivity(activity);
     assert.equal(0, trip.activities.length);
@@ -60,9 +60,9 @@ describe('trip', function() {
     var activity1 = new Activity({name:'Glenmorangie'});
     var activity2 = new Activity({name:'Balvenie'});
     var activity3 = new Activity({name:'Highland Park'});
-    trip.addActivity(activity1);
-    trip.addActivity(activity2);
-    trip.addActivity(activity3);
+    trip.addActivity("",activity1);
+    trip.addActivity("",activity2);
+    trip.addActivity("",activity3);
     trip.getNumberOfActivities()
     assert.equal(3, trip.numberOfActivities);
   });
@@ -72,9 +72,9 @@ describe('trip', function() {
     var activity1 = new Activity({name:'Glenmorangie'});
     var activity2 = new Activity({name:'Balvenie'});
     var activity3 = new Activity({name:'Highland Park'});
-    trip.addActivity(activity1);
-    trip.addActivity(activity2);
-    trip.addActivity(activity3);
+    trip.addActivity("",activity1);
+    trip.addActivity("",activity2);
+    trip.addActivity("",activity3);
     trip.getNumberOfActivities()
     activity1.setCompleted();
     assert.equal(3, trip.numberOfActivities);
@@ -86,9 +86,9 @@ describe('trip', function() {
     var activity1 = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
     var activity2 = new Activity({name:'Balvenie', cost: 50, duration: 0.5});
     var activity3 = new Activity({name:'Highland Park', cost: 50, duration: 0.5});
-    trip.addActivity(activity1);
-    trip.addActivity(activity2);
-    trip.addActivity(activity3);
+    trip.addActivity("",activity1);
+    trip.addActivity("",activity2);
+    trip.addActivity("",activity3);
     trip.getNumberOfActivities()
     assert.equal(3, trip.numberOfActivities);
     assert.equal(150, trip.totalTripCost());
@@ -99,9 +99,9 @@ describe('trip', function() {
     var activity1 = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
     var activity2 = new Activity({name:'Balvenie', cost: 50, duration: 0.5});
     var activity3 = new Activity({name:'Highland Park', cost: 50, duration: 0.5});
-    trip.addActivity(activity1);
-    trip.addActivity(activity2);
-    trip.addActivity(activity3);
+    trip.addActivity("",activity1);
+    trip.addActivity("",activity2);
+    trip.addActivity("",activity3);
     trip.getNumberOfActivities()
     assert.equal(3, trip.numberOfActivities);
     assert.equal(150, trip.totalTripCost());
@@ -113,9 +113,9 @@ describe('trip', function() {
     var activity1 = new Activity({name:'Glenmorangie', cost: 50, duration: 0.5});
     var activity2 = new Activity({name:'Balvenie', cost: 50, duration: 0.5});
     var activity3 = new Activity({name:'Highland Park', cost: 50, duration: 0.5});
-    trip.addActivity(activity1);
-    trip.addActivity(activity2);
-    trip.addActivity(activity3);
+    trip.addActivity("",activity1);
+    trip.addActivity("",activity2);
+    trip.addActivity("",activity3);
     trip.getNumberOfActivities()
     assert.equal(3, trip.numberOfActivities);
     assert.equal(150, trip.totalTripCost());
@@ -127,9 +127,9 @@ describe('trip', function() {
     var activity1 = new Activity({name:'Glenmorangie'});
     var activity2 = new Activity({name:'Balvenie'});
     var activity3 = new Activity({name:'Highland Park'});
-    trip.addActivity(activity1);
-    trip.addActivity(activity2);
-    trip.addActivity(activity3);
+    trip.addActivity("",activity1);
+    trip.addActivity("",activity2);
+    trip.addActivity("",activity3);
     trip.getNumberOfActivities()
     activity1.setCompleted();
     activity2.setCompleted();
