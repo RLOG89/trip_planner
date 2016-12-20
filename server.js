@@ -32,8 +32,10 @@ app.get('/trips', function(req,res) {
 
 app.post('/trips', function(req,res) {
   console.log('body', req.body);
+
   MongoClient.connect(url, function(err, db) {
     var collection = db.collection('trips');
+
     collection.insertOne(
       { "user_name": req.body.user_name,
         "password": req.body.password,
