@@ -257,6 +257,15 @@ ul {
   background-color: #856367;
 }
 
+#about::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0em;
+}
+
+#about::-webkit-scrollbar-thumb {
+  background-color: #856367;
+}
+
 
 
 button {
