@@ -259,7 +259,6 @@ function carousel() {
    directionsService.route(request, function(response, status) {
      if (status == 'OK') {
        directionsDisplay.setDirections(response);
-       console.log(response)
        var route = response.routes[0];
        var routeDescription = document.getElementById('route-description');
        routeDescription.innerHTML = '';
