@@ -39,6 +39,10 @@ img {
   width: 15px;
 }
 
+#mailto {
+  text-decoration: none;
+}
+
 a {
   text-decoration: hidden;
   color: white;
