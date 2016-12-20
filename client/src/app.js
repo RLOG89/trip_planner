@@ -3,7 +3,6 @@ var sports = require('../api/sports.js');
 var movies = require('../api/movies.js');
 var historic = require('../api/historic.js');
 var MapWrapper = require('./views/mapWrapper.js');
-// var DbHelper = require('./helper/dbHelper.js');
 var Organizer = require('./organizer/organizer.js');
 var Trip = require('./organizer/trip.js');
 var ajaxHelper = require('./helper/ajaxHelper.js');
@@ -11,6 +10,26 @@ var url = "http://localhost:3000/trips";
 var _id = "";
 
   var app = function() {
+
+    var login = document.querySelector('#login');
+    login.onsubmit = function(e) {
+
+      var username = document.getElementById("login-user-name").value
+      var password = document.getElementById("login-password").value
+      e.preventDefault();
+
+      ajaxHelper.makeGetRequest("http://localhost:3000/trips?user_name=" + username, function(data) {
+        var userExists = JSON.parse(data)
+        console.log(userExists)
+        if(userExists.length >= 1) {
+          containerIndex.style.visibility = 'hidden';
+          containerDestination.style.visibility = 'hidden';
+          containerItinerary.style.visibility = 'visible';
+        } else {
+          alert('You have not registered.  Please sign up above.')
+        }
+    })
+    }
 
     var organizer = new Organizer();
 
@@ -39,7 +58,6 @@ var _id = "";
         _id = id;
         // ajaxHelper.makeGetRequest("http://localhost:3000/trips/" + id.replace(/"/g, '') + "/edit", tripData, cb);
       })
-     
     };
 
     var containerIndex = document.getElementById('container-index');
@@ -49,21 +67,16 @@ var _id = "";
     var destinationButton = document.getElementById('destination-button')
     var itineraryButton = document.getElementById('itinerary-button')
     indexButton.onclick = function() {
-      console.log('working')
       containerIndex.style.visibility = 'visible';
       containerDestination.style.visibility = 'hidden';
       containerItinerary.style.visibility = 'hidden';
     }
     destinationButton.oncall = function() {
-      console.log('working')
-
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'visible';
       containerItinerary.style.visibility = 'hidden';
     }
     itineraryButton.onclick = function() {
-      console.log('working')
-
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'hidden';
       containerItinerary.style.visibility = 'visible';
