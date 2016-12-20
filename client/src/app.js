@@ -162,6 +162,7 @@ var app = function() {
         viewButton.innerHTML = 'view';
         addButton.innerHTML = 'add to trip';
         addButton.id = 'add-button';
+        console.log(addButton.value)
         viewButton.addEventListener ("click", function() {
           var description = document.getElementById('description');
           var image = document.createElement('img');
@@ -173,7 +174,13 @@ var app = function() {
           description.appendChild(image);
         });
         addButton.addEventListener ("click", function() {
-          newTrip.addActivity(_id, item)
+          if (this.innerHTML === "add to trip") {
+            this.innerHTML = "remove from trip"
+            newTrip.addActivity(_id, item)
+          } else {
+            this.innerHTML = "add to trip"
+            newTrip.removeActivity(_id, item)
+          }
         })
         destination.innerText = item.name +', ' + item.location;
         list.appendChild(destination);
@@ -181,7 +188,7 @@ var app = function() {
         list.appendChild(addButton);
         list.appendChild(spacer);
         itemCoords = {lat: item.lat, lng: item.lng};
-        console.log(newMap);
+        // console.log(newMap);
         newMap.addMarker(itemCoords, item.img, item.description, iconImage);
       })
     };
