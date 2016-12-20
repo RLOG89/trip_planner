@@ -20,7 +20,6 @@ app.get('/', function (req, res) {
 app.get('/trips', function(req,res) {
   MongoClient.connect(url, function(err, db) {
     var collection = db.collection('trips');
-    console.log(req);
     collection.find({
       "user_name" : req.query.user_name
     }).toArray(function(err, docs) {
