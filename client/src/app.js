@@ -190,7 +190,7 @@ function carousel() {
           image.width = '100px';
           description.appendChild(image);
           newMap.clearMarkers();
-          newMap.addMarker({lat: item.lat, lng: item.lng}, item.img, item.description, iconImage);
+          newMap.addMarker({lat: item.lat, lng: item.lng}, item.name, item.cost, item.duration, iconImage);
         });
         addButton.addEventListener ("click", function() {
           if (this.innerHTML === "add to trip") {
@@ -208,7 +208,7 @@ function carousel() {
         list.appendChild(spacer);
         itemCoords = {lat: item.lat, lng: item.lng};
         // console.log(newMap);
-        newMap.addMarker(itemCoords, item.img, item.description, iconImage);
+        newMap.addMarker(itemCoords, item.name, item.cost, item.duration, iconImage);
       })
     };
     var itineraryMapDiv = document.getElementById('itinerary-map');

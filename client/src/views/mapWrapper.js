@@ -8,7 +8,7 @@ var MapWrapper = function(container, coords, zoom) {
 };
 
 MapWrapper.prototype = {
-  addMarker: function(coords, image, description, icopng) {
+  addMarker: function(coords, name, cost, duration, icopng) {
     var marker = new google.maps.Marker({
       
       position: coords,
@@ -18,7 +18,7 @@ MapWrapper.prototype = {
     });
 
     var infowindow = new google.maps.InfoWindow({
-      content: '<IMG BORDER="0" ALIGN="Left" SRC="' + image + '">' + description
+      content: 'Name: ' + name + "<br>" + 'Cost: £' + cost + "<br>" + 'Duration: ' + duration + ' days' 
     });
     marker.addListener('click', function() {
       infowindow.open(this, marker);
