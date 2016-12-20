@@ -94,7 +94,10 @@ app.put('/trips/:id', function(req,res) {
       {$set: 
         {
           "activities": req.body.activities,
-          "number_of_activities": req.body.numberOfActivities
+          "number_of_activities": req.body.numberOfActivities,
+          "cost": req.body.cost,
+          "duration": req.body.duration,
+          "budget": req.body.budget
         }
       });
     res.status(200).end();

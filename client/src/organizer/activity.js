@@ -3,6 +3,8 @@ var Activity = function(params) {
   this.cost = params.cost;
   this.duration = params.duration;
   this.completed = false;
+  this.lat = params.lat;
+  this.lng = params.lng;
   this.notes = "";
 };
 
