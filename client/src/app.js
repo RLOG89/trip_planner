@@ -8,7 +8,7 @@ var Trip = require('./organizer/trip.js');
 var ajaxHelper = require('./helper/ajaxHelper.js');
 var url = "http://localhost:3000/trips";
 var _id = "";
-var thisid = "";
+// var thisid = "";
 
 var app = function() {
 
@@ -67,12 +67,14 @@ function carousel() {
         end_date: document.querySelector('#end-date').value,
         start_end_point: document.querySelector('#start-end-point').value
       };
+      console.log(tripData)
       newTrip = new Trip(tripData);
       organizer.addTrip(newTrip);
 
       ajaxHelper.makePostRequest(url, tripData, function(id){
+        console.log("i am being called")
         _id = id;
-        thisid = "http://localhost:3000/trips/" + id.replace(/"/g, '')
+        // thisid = "http://localhost:3000/trips/" + id.replace(/"/g, '') 
         // ajaxHelper.makeGetRequest("http://localhost:3000/trips/" + id.replace(/"/g, '') + "/edit", tripData, cb);
       })
 
@@ -178,6 +180,7 @@ function carousel() {
         viewButton.innerHTML = 'view';
         addButton.innerHTML = 'add to trip';
         addButton.id = 'add-button';
+        console.log(addButton.value)
         viewButton.addEventListener ("click", function() {
           var description = document.getElementById('description');
           var image = document.createElement('img');
@@ -189,7 +192,13 @@ function carousel() {
           description.appendChild(image);
         });
         addButton.addEventListener ("click", function() {
-          newTrip.addActivity(_id, item)
+          if (this.innerHTML === "add to trip") {
+            this.innerHTML = "remove from trip"
+            newTrip.addActivity(_id, item)
+          } else {
+            this.innerHTML = "add to trip"
+            newTrip.removeActivity(_id, item)
+          }
         })
         destination.innerText = item.name +', ' + item.location;
         list.appendChild(destination);
@@ -197,7 +206,7 @@ function carousel() {
         list.appendChild(addButton);
         list.appendChild(spacer);
         itemCoords = {lat: item.lat, lng: item.lng};
-        console.log(newMap);
+        // console.log(newMap);
         newMap.addMarker(itemCoords, item.img, item.description, iconImage);
       })
     };

@@ -34,7 +34,7 @@ Trip.prototype = {
     this.duration = Math.round((date2-date1)/(1000*60*60*24))
   },
   addActivity: function(id, activity) {
-    // console.log('I was called', id, activity);
+    console.log('I was called', id, activity);
     var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
     this.activities.push(activity);
     this.numberOfActivities ++;
@@ -45,24 +45,25 @@ Trip.prototype = {
       if(request.status === 200) {
       }
     };
-    // console.log("Trip:", this)
+    console.log("Trip:", this)
     request.send(JSON.stringify(this));
   },
-  removeActivity: function(activity) {
-    // var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
-    // var index = this.activities.indexOf(activity)
-    // for (var activity of this.activities) {
-    //   this.activities.splice(index, 1);
-    // }
-    // var request = new XMLHttpRequest();
-    // request.open("PUT", url);
-    // request.setRequestHeader("Content-Type", "application/json");
-    // request.onload = function() {
-    //   if(request.status === 200) {
-    //   }
-    // };
-    // console.log("Trip:", this)
-    // request.send(JSON.stringify(this));
+  removeActivity: function(id, activity) {
+    console.log("removeActivity called")
+    var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
+    var index = this.activities.indexOf(activity)
+    for (var activity of this.activities) {
+      this.activities.splice(index, 1);
+    }
+    var request = new XMLHttpRequest();
+    request.open("PUT", url);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onload = function() {
+      if(request.status === 200) {
+      }
+    };
+    console.log("Trip:", this)
+    request.send(JSON.stringify(this));
   },
   getNumberOfActivities: function() {
     this.numberOfActivities = this.activities.length;
