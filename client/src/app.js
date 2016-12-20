@@ -150,7 +150,7 @@ var _id = "";
           description.appendChild(image);
         });
         addButton.addEventListener ("click", function() {
-          newTrip.addActivity(_id, item.name)
+          newTrip.addActivity(_id, item)
         })
         destination.innerText = item.name +', ' + item.location;
         list.appendChild(destination);
@@ -182,7 +182,26 @@ var _id = "";
   var directionsService = new google.maps.DirectionsService();
 
   var tripWaypoints = [{location: 'Balvenie, Dufftown', stopover: true}, {location: 'Highland Park, Kirkwall', stopover: true}];
-  
+
+  var url = "http://localhost:3000/trips/" + _id.replace(/"/g, '');
+
+  // var url = "http://localhost:3000/trips/58582102bae57fb4460ec8ac";
+
+
+  ajaxHelper.makeGetRequest(url, function() {
+  if(request.status === 200) {
+    console.log('got the data');
+    console.log(request.responseText);
+    var trip = JSON.parse(request.responseText);
+    console.log(trip)
+    for(items of trip) {
+      console.log(items)
+    }
+  }
+  })    
+
+
+  console.log(url)
 
   var request = {
     origin: 'Emirates Arena, Glasgow',
