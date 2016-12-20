@@ -29,6 +29,7 @@ app.get('/trips', function(req,res) {
     });
   });
 });
+});
 
 app.post('/trips', function(req,res) {
   console.log('body', req.body);
