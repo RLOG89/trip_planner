@@ -1,5 +1,3 @@
-var ajaxHelper = require('../helper/ajaxHelper.js');
-
 var Trip = function(params) {
   this.name = params.name;              // the name of the trip e.g Distillery tour 2016
   this.owner = params.owner;            // the full name of the trips owner
@@ -53,9 +51,7 @@ Trip.prototype = {
     var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
     var index = this.activities.indexOf(activity)
     this.activities.splice(index, 1);
-    // for (var activity of this.activities) {
-    //   this.activities.splice(index, 1);
-    // }
+    this.numberOfActivities --;
     var request = new XMLHttpRequest();
     request.open("PUT", url);
     request.setRequestHeader("Content-Type", "application/json");
