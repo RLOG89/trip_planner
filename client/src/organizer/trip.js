@@ -1,3 +1,5 @@
+var ajaxHelper = require('../helper/ajaxHelper.js');
+
 var Trip = function(params) {
   this.name = params.name;              // the name of the trip e.g Distillery tour 2016
   this.owner = params.owner;            // the full name of the trips owner
@@ -38,15 +40,8 @@ Trip.prototype = {
     this.cost += activity.cost;
     this.duration += activity.duration;
     this.budget -= activity.cost;
-    var request = new XMLHttpRequest();
-    request.open("PUT", url);
-    request.setRequestHeader("Content-Type", "application/json");
-    request.onload = function() {
-      if(request.status === 200) {
-      }
-    };
-    request.send(JSON.stringify(this));
-  },
+  ajaxHelper.makePutRequest(url, this)
+},
   removeActivity: function(id, activity) {
     var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
     var index = this.activities.indexOf(activity)
@@ -55,16 +50,8 @@ Trip.prototype = {
     this.cost -= activity.cost;
     this.duration -= activity.duration;
     this.budget += activity.cost;
-    var request = new XMLHttpRequest();
-    request.open("PUT", url);
-    request.setRequestHeader("Content-Type", "application/json");
-    request.onload = function() {
-      if(request.status === 200) {
-      }
-    };
-    console.log("Trip:", this)
-    request.send(JSON.stringify(this));
-  },
+  ajaxHelper.makePutRequest(url, this)
+},
   getNumberOfActivities: function() {
     this.numberOfActivities = this.activities.length;
   },

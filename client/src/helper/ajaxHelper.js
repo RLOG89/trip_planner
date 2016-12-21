@@ -23,7 +23,17 @@ var ajaxHelper = {
         } 
       }
       request.send(JSON.stringify(data));
-    }
+    },
+      makePutRequest: function(url, data) {
+      var request = new XMLHttpRequest();
+      request.open("PUT", url);
+      request.setRequestHeader("Content-Type", "application/json");
+      request.onload = function() {
+        if(request.status === 200) {
+        }
+      };
+      request.send(JSON.stringify(data));
+    },
 };
 
 module.exports = ajaxHelper;
