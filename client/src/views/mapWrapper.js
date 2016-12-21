@@ -18,7 +18,7 @@ MapWrapper.prototype = {
     });
 
     var infowindow = new google.maps.InfoWindow({
-      content: 'Name: ' + name + "<br>" + 'Cost: £' + cost + "<br>" + 'Duration: ' + duration + ' days' 
+      content: '<b> Name:</b> ' + name + '<br><b> Cost:</b> £' + cost + '<br><b> Duration:</b> ' + duration + ' days'
     });
     marker.addListener('click', function() {
       infowindow.open(this, marker);
