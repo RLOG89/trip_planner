@@ -8,7 +8,6 @@ var Trip = require('./organizer/trip.js');
 var ajaxHelper = require('./helper/ajaxHelper.js');
 var url = "http://localhost:3000/trips";
 var _id = "";
-// var thisid = "";
 
 var app = function() {
 
@@ -207,7 +206,6 @@ function carousel() {
         list.appendChild(addButton);
         list.appendChild(spacer);
         itemCoords = {lat: item.lat, lng: item.lng};
-        // console.log(newMap);
         newMap.addMarker(itemCoords, item.name, item.cost, item.duration, iconImage);
       })
     };
