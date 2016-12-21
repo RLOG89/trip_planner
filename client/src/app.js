@@ -8,6 +8,7 @@ var Trip = require('./organizer/trip.js');
 var ajaxHelper = require('./helper/ajaxHelper.js');
 var url = "http://localhost:3000/trips";
 var _id = "";
+var directionsDisplay = new google.maps.DirectionsRenderer({polylineOptions:{strokeColor:"#856367",strokeWeight:5}, suppressMarkers:true});
 // var thisid = "";
 
 var app = function() {
@@ -37,21 +38,21 @@ var slideIndex = 0;
 carousel();
 
 function carousel() {
-    var slide = document.getElementsByClassName("slide");
-    for (var i = 0; i < slide.length; i++) {
-      slide[i].style.display = "none"; 
-    }
-    slideIndex++;
-    if (slideIndex > slide.length) {slideIndex = 1} 
+  var slide = document.getElementsByClassName("slide");
+  for (var i = 0; i < slide.length; i++) {
+    slide[i].style.display = "none"; 
+  }
+  slideIndex++;
+  if (slideIndex > slide.length) {slideIndex = 1} 
     slide[slideIndex-1].style.display = "block"; 
-    setTimeout(carousel, 5000); 
+  setTimeout(carousel, 5000); 
 }
 
-  var organizer = new Organizer();
+var organizer = new Organizer();
 
-  var tripForm = document.querySelector('#trip-form');
-  tripForm.onsubmit = function(e) {
-    e.preventDefault();
+var tripForm = document.querySelector('#trip-form');
+tripForm.onsubmit = function(e) {
+  e.preventDefault();
       // FIX LATER, NEED TO CALL A FUNCTION
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'visible';
@@ -98,6 +99,7 @@ function carousel() {
     itineraryButton.onclick = function() {
       console.log('working')
       populateItinerary();
+      console.log('still working')
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'hidden';
       containerItinerary.style.visibility = 'visible';
@@ -207,7 +209,6 @@ function carousel() {
         list.appendChild(addButton);
         list.appendChild(spacer);
         itemCoords = {lat: item.lat, lng: item.lng};
-        // console.log(newMap);
         newMap.addMarker(itemCoords, item.name, item.cost, item.duration, iconImage);
       })
     };
@@ -218,7 +219,8 @@ function carousel() {
     var tripWaypoints = [];
 
     var itineraryMapMarkers = function(map, trip) {
-     for (destination of trip.activities) {
+      map.deleteItineraryMarkers();
+      for (destination of trip.activities) {
        destinationCoords = {lat: destination.lat, lng: destination.lng};
        map.addItineraryMarker(destinationCoords, destination.name);
      }
@@ -258,8 +260,9 @@ function carousel() {
    travelMode: "DRIVING"
  };
 
- var directionsDisplay = new google.maps.DirectionsRenderer({polylineOptions:{strokeColor:"#856367",strokeWeight:5}, suppressMarkers:true});
+ directionsDisplay.setDirections({routes: []});
  directionsDisplay.setMap(itineraryMap.map);
+
  directionsService.route(request, function(response, status) {
    if (status == 'OK') {
      directionsDisplay.setDirections(response);
@@ -278,6 +281,7 @@ function carousel() {
    }
  });
 }
+
 }
 
 window.onload = app;
