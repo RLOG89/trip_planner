@@ -148,10 +148,4 @@ describe('trip', function() {
     assert.equal(1.6, trip.distanceMiles);
   });
 
-
-
-
-
-
-
 });

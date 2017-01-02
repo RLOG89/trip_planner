@@ -18,22 +18,13 @@ var Trip = function(params) {
 };
 
 Trip.prototype = {
-  // showTrip: function(id) {
-  //   var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
-  //   ajaxHelper.makeGetRequest(url, function(text) { 
-  //     var trip = JSON.parse(text);
-  //     console.log(trip)
-  //     for(items of trip) {
-  //       console.log(items)
-  //     }
-  //   })    
-  // }
   getDuration: function() {
     date1 = new Date(this.start_date);  
     date2 = new Date(this.end_date); 
     this.duration = Math.round((date2-date1)/(1000*60*60*24))
   },
   addActivity: function(id, activity) {
+    console.log(id)
     var url = "http://localhost:3000/trips/" + id.replace(/"/g, '');
     this.activities.push(activity);
     this.numberOfActivities ++;

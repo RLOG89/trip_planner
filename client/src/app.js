@@ -52,7 +52,6 @@ var organizer = new Organizer();
 var tripForm = document.querySelector('#trip-form');
 tripForm.onsubmit = function(e) {
   e.preventDefault();
-      // FIX LATER, NEED TO CALL A FUNCTION
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'visible';
       containerItinerary.style.visibility = 'hidden';
@@ -71,10 +70,7 @@ tripForm.onsubmit = function(e) {
       organizer.addTrip(newTrip);
 
       ajaxHelper.makePostRequest(url, tripData, function(id){
-        console.log("i am being called")
         _id = id;
-        // thisid = "http://localhost:3000/trips/" + id.replace(/"/g, '') 
-        // ajaxHelper.makeGetRequest("http://localhost:3000/trips/" + id.replace(/"/g, '') + "/edit", tripData, cb);
       })
 
     };
@@ -96,9 +92,7 @@ tripForm.onsubmit = function(e) {
       containerItinerary.style.visibility = 'hidden';
     }
     itineraryButton.onclick = function() {
-      console.log('working')
       populateItinerary();
-      console.log('still working')
       containerIndex.style.visibility = 'hidden';
       containerDestination.style.visibility = 'hidden';
       containerItinerary.style.visibility = 'visible';

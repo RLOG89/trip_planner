@@ -24,6 +24,4 @@ describe('organizer', function() {
     assert.equal(0, organizer.trips.length);
   });
 
-
-
 });
